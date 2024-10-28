@@ -97,8 +97,8 @@
     <dimen name="height_mymanitto_viewholder">204dp</dimen>
     <dimen name="width_mymanitto_viewholder">160dp</dimen>
     <dimen name="size_mymanitto_title">16sp</dimen>
-    <dimen name="padding_mymanitto_horizontal">14dp</dimen>
-    <dimen name="padding_mymanitto_veertical">17dp</dimen>
+    <dimen name="padding_mymanitto_horizontal">12dp</dimen>
+    <dimen name="padding_mymanitto_veertical">20dp</dimen>
     <dimen name="size_mymanitto_mission_text">14sp</dimen>
     <dimen name="size_mymanitto_state_text">14sp</dimen>
     <dimen name="lineheight_mymanitto_mission_text">18sp</dimen>

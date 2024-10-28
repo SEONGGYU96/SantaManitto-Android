@@ -6,7 +6,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="@dimen/width_mymanitto_viewholder"
         android:layout_height="@dimen/height_mymanitto_viewholder"
-        app:cardBackgroundColor="@color/gray_4">
+        app:cardBackgroundColor="@color/gray_3">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -21,8 +21,8 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="@string/mymanitto_removed"
-                android:textColor="@color/gray_2"
-                android:textFontWeight="700"
+                android:textColor="@color/dark_gray"
+                android:textFontWeight="600"
                 android:textSize="@dimen/size_mymanitto_title"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -34,23 +34,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/mymanitto_removed_content"
-                android:textSize="12dp"
-                android:textColor="@color/gray_2"
+                android:textColor="@color/dark_gray"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toTopOf="@id/textview_mymanittoremoved_button"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textview_mymanittoremoved_title"
-                app:layout_constraintVertical_bias="0.274" />
+                app:layout_constraintVertical_bias="0.566" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <TextView
                 android:id="@+id/textview_mymanittoremoved_button"
-                android:layout_width="63dp"
-                android:layout_height="34dp"
-                android:background="@drawable/round_ractangle_background_30"
-                android:backgroundTint="@color/gray_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_ractangle_background_4_border"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="6dp"
                 android:text="@string/mymanitto_remove"
                 android:textColor="@color/dark_gray"
-                android:textSize="12dp"
-                android:textFontWeight="700"
+                android:textFontWeight="500"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
