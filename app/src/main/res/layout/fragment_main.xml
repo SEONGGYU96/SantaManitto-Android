@@ -80,12 +80,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/padding_entire"
-            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
             android:text="@string/main_my_manitto_history"
             android:textColor="@color/dark_gray"
             android:textFontWeight="600"
             android:textSize="@dimen/size_main_mymanitto"
-            app:layout_constraintTop_toBottomOf="@id/santaimageroundbutton_main_makeroom"
+            app:layout_constraintBottom_toTopOf="@id/constraintlayout_main_nomymanitto"
             app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageButton
@@ -122,10 +122,10 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_mymanitto_viewholder"
             android:layout_marginHorizontal="@dimen/padding_entire"
-            android:layout_marginTop="20dp"
+            android:layout_marginBottom="@dimen/margin_main_recyclerview_bottom"
             android:background="@drawable/round_ractangle_background"
             android:backgroundTint="@color/gray_1"
-            app:layout_constraintTop_toBottomOf="@id/textview_main_joinedroom"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
