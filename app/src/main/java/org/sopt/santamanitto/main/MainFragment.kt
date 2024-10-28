@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -78,11 +79,7 @@ class MainFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.isRefreshing.collect { isRefreshing ->
-                    binding.progressbarMainJoinedRooms.visibility = if (isRefreshing) {
-                        View.VISIBLE
-                    } else {
-                        View.GONE
-                    }
+                    binding.progressbarMainJoinedRooms.isVisible = isRefreshing
 
                     if (isRefreshing) adapter.clear()
                 }
