@@ -8,7 +8,6 @@ import org.sopt.santamanitto.room.data.TempPersonalRoomModel
 import org.sopt.santamanitto.room.manittoroom.network.ManittoRoomMember
 import org.sopt.santamanitto.room.manittoroom.network.ManittoRoomModel
 import org.sopt.santamanitto.room.network.RoomRequest
-import org.sopt.santamanitto.user.data.controller.UserAuthController
 import org.sopt.santamanitto.user.data.source.UserMetadataSource
 import org.sopt.santamanitto.util.TimeUtil
 import javax.inject.Inject
@@ -16,7 +15,6 @@ import javax.inject.Inject
 @HiltViewModel
 class ManittoRoomViewModel @Inject constructor(
     private val userMetadataSource: UserMetadataSource,
-    private val userDataSource: UserAuthController,
     private val roomRequest: RoomRequest
 ) : NetworkViewModel() {
 

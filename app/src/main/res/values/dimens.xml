@@ -140,7 +140,7 @@
 
     <dimen name="margin_joinroom_edittext_top">10dp</dimen>
 
-    <dimen name="margin_waitingroom_cardview_bottom">16dp</dimen>
+    <dimen name="margin_waitingroom_cardview_bottom">60dp</dimen>
     <dimen name="padding_waitingroom_invitation_code_horizontal">16dp</dimen>
     <dimen name="padding_waitingroom_invitation_code_vertical">6dp</dimen>
     <dimen name="margin_waitingroom_invitation_code_top">27dp</dimen>

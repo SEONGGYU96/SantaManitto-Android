@@ -103,7 +103,10 @@ class FinishFragment : Fragment() {
             santabackgroundFinish.setOnBackKeyClickListener {
                 requireActivity().finish()
             }
-            santabottombuttonFinishExit.setOnClickListener {
+            santabottombuttonReturn.setOnClickListener {
+                requireActivity().finish()
+            }
+            santabuttonFinishExit.setOnClickListener {
                 showExitDialog()
             }
         }

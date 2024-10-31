@@ -103,6 +103,7 @@
     <string name="matched_bottom_button_delete">나의 산타 마니또에서 삭제하기</string>
 
     <string name="finish_bottom_button">전체 결과 보기</string>
+    <string name="finish_bottom_button_return">홈으로 가기</string>
     <string name="finish_manitto_title">%d일동안의 산타 마니또 종료!\n나의 산타 마니또는 누구일까?</string>
     <string name="finish_title">나를 챙겨준 산타는?</string>
     <string name="result_bottom">홈으로 가기</string>
