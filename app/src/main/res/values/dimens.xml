@@ -193,7 +193,7 @@
     <dimen name="margin_result_divider_top">18dp</dimen>
     <dimen name="padding_result_recyclerview_vertical">16dp</dimen>
     <dimen name="padding_itemresult_text_horizontal">14dp</dimen>
-    <dimen name="padding_itemresult_text_vertical">6dp</dimen>
+    <dimen name="padding_itemresult_text_vertical">12dp</dimen>
     <dimen name="margin_result_recyclerview_item">15dp</dimen>
 
     <dimen name="size_santainputname_alert">10dp</dimen>
