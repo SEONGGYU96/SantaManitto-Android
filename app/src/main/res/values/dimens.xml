@@ -171,7 +171,7 @@
     <dimen name="width_matching_logo">72dp</dimen>
     <dimen name="height_matching_logo">33dp</dimen>
     <dimen name="size_matching_text">12sp</dimen>
-    <dimen name="padding_matched_cardview_vertical">20dp</dimen>
+    <dimen name="padding_matched_cardview_vertical">24dp</dimen>
     <dimen name="size_matched_manitto">24sp</dimen>
     <dimen name="padding_matched_manitto_horizontal">44dp</dimen>
     <dimen name="padding_matched_manitto_vertical">12dp</dimen>
@@ -181,7 +181,7 @@
     <dimen name="margin_matched_mission_bottom">15dp</dimen>
     <dimen name="margin_matched_mission_title_bottom">20dp</dimen>
     <dimen name="padding_matched_mission">12dp</dimen>
-    <dimen name="size_matched_mission">15sp</dimen>
+    <dimen name="size_matched_mission">16sp</dimen>
     <dimen name="margin_matched_buttons">16dp</dimen>
 
     <dimen name="margin_finish_redsocks_end">30dp</dimen>
