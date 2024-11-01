@@ -120,7 +120,7 @@ class ManittoRoomViewModel @Inject constructor(
         startLoading()
         roomRequest.getPersonalRoomInfo(roomId, object : RoomRequest.GetPersonalRoomInfoCallback {
             override fun onLoadPersonalRoomInfo(personalRoom: TempPersonalRoomModel) {
-                _mySantaName.value = personalRoom.manitto.username
+                _myManittoName.value = personalRoom.manitto.username
                 _myMission.value = personalRoom.mission.content
                 stopLoading()
             }

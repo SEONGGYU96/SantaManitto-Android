@@ -97,8 +97,9 @@
     <string name="matching_text">산타 마니또 매칭중\n잠시만 기다려줘 :)</string>
 
     <string name="matched_bottom_button">마니또 하러 가기</string>
-    <string name="matched_mission_title">마니또가 나에게 수행한 미션</string>
+    <string name="matched_mission_title" formatted="false">%s 산타가 수행할 미션</string>
     <string name="matched_manitto_title" formatted="false">%s 산타의 마니또</string>
+    <string name="matched_mission_manitto_title">마니또가 나에게 수행한 미션</string>
     <string name="matched_no_mission">미션이 없습니다</string>
     <string name="matched_bottom_button_delete">나의 산타 마니또에서 삭제하기</string>
 

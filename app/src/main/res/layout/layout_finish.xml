@@ -54,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_matched_mission_title_bottom"
-            android:text="@string/matched_mission_title"
+            android:text="@string/matched_mission_manitto_title"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@id/textview_finish_mission"
             app:layout_constraintStart_toStartOf="parent" />
