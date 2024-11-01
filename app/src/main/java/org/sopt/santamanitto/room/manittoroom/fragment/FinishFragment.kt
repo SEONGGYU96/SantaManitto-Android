@@ -145,7 +145,9 @@ class FinishFragment : Fragment() {
             .setContentText(requireContext().getString(R.string.exit_dialog_history))
             .addHorizontalButton(requireContext().getString(R.string.dialog_cancel))
             .addHorizontalButton(requireContext().getString(R.string.dialog_confirm)) {
+                Timber.tag("qqqq").d("showExitDialog")
                 viewModel.removeHistory {
+                    Timber.tag("qqqq").d("removeHistory")
                     requireActivity().finish()
                 }
             }
