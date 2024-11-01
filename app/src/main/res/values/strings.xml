@@ -107,7 +107,7 @@
     <string name="finish_bottom_button_return">홈으로 가기</string>
     <string name="finish_manitto_title">%d일동안의 산타 마니또 종료!\n나의 산타 마니또는 누구일까?</string>
     <string name="finish_title">나를 챙겨준 산타 마니또</string>
-    <string name="result_bottom">홈으로 가기</string>
+    <string name="result_bottom">내 결과 보기</string>
     <string name="result_title">총 %d명</string>
 
     <string name="santanameinput_alert">・이름은 최대 %d자까지 설정 가능해</string>

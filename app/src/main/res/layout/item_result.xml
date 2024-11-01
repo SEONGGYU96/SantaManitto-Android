@@ -60,17 +60,6 @@
             app:layout_constraintTop_toTopOf="parent"
             tool:text="이영진이영진이영진이" />
 
-        <org.sopt.santamanitto.view.SantaLoading
-            android:id="@+id/santaloading_itemresult"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="@id/textview_itemresult_santa"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/textview_itemresult_santa"
-            tool:visibility="gone" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

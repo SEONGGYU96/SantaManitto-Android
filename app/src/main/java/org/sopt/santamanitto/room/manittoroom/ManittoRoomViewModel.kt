@@ -86,8 +86,7 @@ class ManittoRoomViewModel @Inject constructor(
                 manittoRoom.run {
                     _roomName.value = roomName
                     _expiration.value = expirationDate
-                    _isExpired.value =
-                        TimeUtil.getDayDiffFromNow(expirationDate) < 0
+                    _isExpired.value = TimeUtil.getDayDiffFromNow(expirationDate) < 0
                     _members.value = members
                     _invitationCode = invitationCode
                     _isAdmin.value = userMetadataSource.getUserId() == creator.userId
