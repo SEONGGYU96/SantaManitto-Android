@@ -3,9 +3,8 @@ package org.sopt.santamanitto.room.manittoroom.fragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,7 +17,6 @@ import org.sopt.santamanitto.room.manittoroom.ResultAdapter
 import org.sopt.santamanitto.util.BindingAdapters.setLayoutHeight
 import org.sopt.santamanitto.view.dialog.RoundDialogBuilder
 import timber.log.Timber
-import javax.inject.Inject
 import android.view.View.OnLayoutChangeListener as OnLayoutChangeListener1
 
 @AndroidEntryPoint
@@ -34,10 +32,11 @@ class FinishFragment : Fragment() {
     private lateinit var finishBinding: LayoutFinishBinding
     private lateinit var resultBinding: LayoutResultBinding
 
-    private val viewModel: ManittoRoomViewModel by activityViewModels()
+    private var _adapter: ResultAdapter? = null
+    val adapter
+        get() = requireNotNull(_adapter)
 
-    @Inject
-    lateinit var resultAdapter: ResultAdapter
+    private val viewModel: ManittoRoomViewModel by activityViewModels()
 
     private var isFinishScreen = true
 
@@ -76,18 +75,10 @@ class FinishFragment : Fragment() {
 
         viewModel.run {
             refreshManittoRoomInfo()
-            // getPersonalRelationInfo()
         }
 
+        setResultBinding()
         setOnClickListener()
-    }
-
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
-        val value = savedInstanceState?.getBoolean(SCREEN_KEY, true) ?: true
-        if (!value) {
-            showResultView()
-        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -95,11 +86,22 @@ class FinishFragment : Fragment() {
         super.onSaveInstanceState(outState)
     }
 
+    private fun setResultBinding() {
+        resultBinding.run {
+            vm = viewModel
+            lifecycleOwner = viewLifecycleOwner
+            _adapter = ResultAdapter()
+            adapter.submitList(viewModel.members.value)
+            recyclerviewResult.adapter = adapter
+        }
+        viewModel.members.observe(viewLifecycleOwner) {
+            resultBinding.textviewResultTitle.text =
+                String.format(getString(R.string.result_title), it.size)
+        }
+    }
+
     private fun setOnClickListener() {
         binding.run {
-            santabottombuttonFinish.setOnClickListener {
-                showResultView()
-            }
             santabackgroundFinish.setOnBackKeyClickListener {
                 requireActivity().finish()
             }
@@ -109,31 +111,16 @@ class FinishFragment : Fragment() {
             santabuttonFinishExit.setOnClickListener {
                 showExitDialog()
             }
-        }
-    }
-
-    private fun showResultView() {
-        isFinishScreen = false
-        //finish 뷰 가리기, result 뷰 세팅
-        finishBinding.root.visibility = GONE
-        resultBinding.run {
-            vm = viewModel
-            lifecycleOwner = viewLifecycleOwner
-            root.visibility = VISIBLE
-            recyclerviewResult.adapter = resultAdapter
-        }
-
-        //총 인원 설정
-        viewModel.members.observe(viewLifecycleOwner) {
-            resultBinding.textviewResultTitle.text =
-                String.format(getString(R.string.result_title), it.size)
-        }
-
-        //버튼 동작 변경
-        binding.santabottombuttonFinish.run {
-            setText(R.string.result_bottom)
-            setOnClickListener {
-                requireActivity().finish()
+            santabottombuttonFinish.setOnClickListener {
+                if (isFinishScreen) {
+                    isFinishScreen = false
+                    binding.santabottombuttonFinish.setText(R.string.finish_bottom_button)
+                } else {
+                    isFinishScreen = true
+                    binding.santabottombuttonFinish.setText(R.string.result_bottom)
+                }
+                finishBinding.root.isVisible = isFinishScreen
+                resultBinding.root.isVisible = !isFinishScreen
             }
         }
     }
