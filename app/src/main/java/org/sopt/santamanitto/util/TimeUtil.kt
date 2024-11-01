@@ -83,7 +83,8 @@ object TimeUtil {
 
     fun isExpired(expirationDate: String): Boolean {
         return try {
-            val parsedExpirationDate = utcFormat.parse(expirationDate)
+            val parsedExpirationDate =
+                SimpleDateFormat(UTC_DATE_FORMAT, Locale.KOREA).parse(expirationDate)
             parsedExpirationDate?.before(Date()) ?: true
         } catch (e: Exception) {
             e.printStackTrace()

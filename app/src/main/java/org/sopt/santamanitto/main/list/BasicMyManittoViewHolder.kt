@@ -39,7 +39,9 @@ class BasicMyManittoViewHolder(
         listener?.let { listener ->
             val isFinished = if (data.expirationDate == null) {
                 true
-            } else TimeUtil.isExpired(data.expirationDate)
+            } else {
+                TimeUtil.isExpired(data.expirationDate)
+            }
 
             binding.root.setOnClickListener {
                 listener.invoke(data.roomId, data.matchingDate != null, isFinished)
