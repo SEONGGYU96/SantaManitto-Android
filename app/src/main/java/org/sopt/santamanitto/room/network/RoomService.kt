@@ -36,7 +36,7 @@ interface RoomService {
     fun modifyRoom(
         @Path("roomId") roomId: String,
         @Body request: ModifyRoomRequestModel
-    ): Call<Response<SimpleResponse>>
+    ): Call<SimpleResponse>
 
     @POST("rooms/enter")
     fun joinRoom(
@@ -51,7 +51,7 @@ interface RoomService {
     @POST("rooms/{roomId}/match")
     fun matchManitto(
         @Path("roomId") roomId: String
-    ): Call<Response<SimpleResponse>>
+    ): Call<SimpleResponse>
 
     @POST("rooms/exit")
     fun exitRoom(
