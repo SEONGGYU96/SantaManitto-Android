@@ -29,6 +29,8 @@ class JoinRoomFragment : BaseFragment<FragmentJoinRoomBinding>(R.layout.fragment
         subscribeUI()
         setOnClickListener()
         hideKeyboardOnOutsideEditText()
+
+        binding.santabackgroundJoinroom.setMiddleTitleFontWeight(500)
     }
 
     private fun subscribeUI() {
