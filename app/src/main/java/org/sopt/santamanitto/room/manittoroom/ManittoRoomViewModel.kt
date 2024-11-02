@@ -96,6 +96,8 @@ class ManittoRoomViewModel @Inject constructor(
                     if (!manittoRoom.matchingDate.isNullOrBlank()) {
                         _missionToMe.value =
                             findMissionContentByUserId(userMetadataSource.getUserId(), this)
+                        _mySantaName.value =
+                            findManittoUserNameByUserId(userMetadataSource.getUserId(), this)
                     }
                     stopLoading()
                 }
@@ -110,8 +112,12 @@ class ManittoRoomViewModel @Inject constructor(
     fun findMissionContentByUserId(userId: String, manittoRoomModel: ManittoRoomModel): String? {
         val matchingMember = manittoRoomModel.members.find { it.manitto.userId == userId }
         val santaMissionId = matchingMember?.santa?.missionId ?: return null
-        val mission = manittoRoomModel.missions.find { it.missionId == santaMissionId }
-        return mission?.content
+        return manittoRoomModel.missions.find { it.missionId == santaMissionId }?.content
+    }
+
+    fun findManittoUserNameByUserId(userId: String, manittoRoomModel: ManittoRoomModel): String? {
+        val matchingMember = manittoRoomModel.members.find { it.santa.userId == userId }
+        return matchingMember?.manitto?.userName
     }
 
     fun match() {
