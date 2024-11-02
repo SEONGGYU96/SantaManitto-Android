@@ -35,17 +35,6 @@ object TimeUtil {
         }
     }
 
-    // Local -> UTC
-    fun convertLocalToUtc(localTime: String): String {
-        return try {
-            val date = localFormat.parse(localTime)
-            date?.let { utcFormat.format(it) } ?: throw IllegalArgumentException(WRONG_FORMAT)
-        } catch (e: Exception) {
-            e.printStackTrace()
-            WRONG_FORMAT
-        }
-    }
-
     // UTC -> Calendar
     fun convertUtcToCalendar(utcTime: String): Calendar {
         val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
@@ -83,7 +72,8 @@ object TimeUtil {
 
     fun isExpired(expirationDate: String): Boolean {
         return try {
-            val parsedExpirationDate = utcFormat.parse(expirationDate)
+            val parsedExpirationDate =
+                SimpleDateFormat(UTC_DATE_FORMAT, Locale.KOREA).parse(expirationDate)
             parsedExpirationDate?.before(Date()) ?: true
         } catch (e: Exception) {
             e.printStackTrace()
@@ -96,15 +86,14 @@ object TimeUtil {
         return SimpleDateFormat(LOCAL_DATE_FORMAT, Locale.KOREA).format(Date(calendar.timeInMillis))
     }
 
-    // Local -> GregorianCalendar
-    fun convertLocalToGregorianCalendar(localTime: String): GregorianCalendar {
-        return try {
-            GregorianCalendar(KOREA_TIME_ZONE).apply {
-                time = localFormat.parse(localTime) ?: throw IllegalArgumentException(WRONG_FORMAT)
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-            throw IllegalArgumentException(WRONG_FORMAT)
+    // Utc -> GregorianCalendar
+    fun convertUtcToGregorianCalendar(utcFormatString: String): GregorianCalendar {
+        val defaultFormat = SimpleDateFormat(UTC_DATE_FORMAT, Locale.KOREA).apply {
+            timeZone = KOREA_TIME_ZONE
+        }
+        return GregorianCalendar().apply {
+            time = defaultFormat.parse(utcFormatString)
+                ?: throw IllegalArgumentException(WRONG_FORMAT)
         }
     }
 

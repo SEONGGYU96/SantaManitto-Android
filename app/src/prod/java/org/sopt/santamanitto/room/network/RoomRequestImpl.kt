@@ -4,7 +4,6 @@ import okhttp3.ResponseBody
 import org.sopt.santamanitto.network.AuthRetrofitClient
 import org.sopt.santamanitto.network.RequestCallback
 import org.sopt.santamanitto.network.Response
-import org.sopt.santamanitto.network.SimpleResponse
 import org.sopt.santamanitto.network.start
 import org.sopt.santamanitto.room.create.network.CreateRoomModel
 import org.sopt.santamanitto.room.create.network.CreateRoomRequestModel
@@ -61,16 +60,7 @@ class RoomRequestImpl(
         request: ModifyRoomRequestModel,
         callback: (onSuccess: Boolean) -> Unit
     ) {
-        roomService.modifyRoom(roomId, request)
-            .start(object : RequestCallback<SimpleResponse> {
-                override fun onSuccess(data: SimpleResponse) {
-                    callback.invoke(true)
-                }
-
-                override fun onFail() {
-                    callback.invoke(false)
-                }
-            })
+        roomService.modifyRoom(roomId, request).start(callback)
     }
 
     override fun joinRoom(request: JoinRoomRequestModel, callback: RoomRequest.JoinRoomCallback) {
@@ -114,15 +104,7 @@ class RoomRequestImpl(
     }
 
     override fun matchManitto(roomId: String, callback: (onSuccess: Boolean) -> Unit) {
-        roomService.matchManitto(roomId).start(object : RequestCallback<SimpleResponse> {
-            override fun onSuccess(data: SimpleResponse) {
-                callback.invoke(true)
-            }
-
-            override fun onFail() {
-                callback.invoke(false)
-            }
-        })
+        roomService.matchManitto(roomId).start(callback)
     }
 
     override fun getPersonalRoomInfo(

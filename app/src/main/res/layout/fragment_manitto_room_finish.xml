@@ -33,6 +33,16 @@
             tool:santaDescription="7일동안의 산타 마니또 종료!\n나의 산타 마니또는 누구일까?"
             tool:santaTitle="마니또 방 이름" />
 
+        <ImageView
+            android:id="@+id/santabutton_finish_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:padding="16dp"
+            android:src="@drawable/ic_delete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <View
             android:id="@+id/view_finish_guideline"
             android:layout_width="match_parent"
@@ -42,25 +52,6 @@
             app:layout_constraintBottom_toBottomOf="@id/santabackground_finish"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageview_finish_socks1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_finish_redsocks_end"
-            android:src="@drawable/ic_socks_with_line"
-            app:layout_constraintEnd_toStartOf="@id/imageview_finish_socks2"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageview_finish_socks2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_finish_greensocks_end"
-            android:src="@drawable/ic_socks_with_line_green"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:layout_width="@dimen/width_finish_characters_layout"
@@ -97,7 +88,7 @@
             android:layout_marginHorizontal="@dimen/padding_entire"
             android:layout_marginTop="@dimen/margin_cardview_to_guidline_top"
             android:layout_marginBottom="@dimen/margin_waitingroom_cardview_bottom"
-            app:layout_constraintBottom_toTopOf="@id/santabottombutton_finish"
+            app:layout_constraintBottom_toTopOf="@id/linearlayout_createroom_buttons"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/view_finish_guideline"
@@ -125,29 +116,39 @@
 
         </org.sopt.santamanitto.view.SantaCardView>
 
-        <org.sopt.santamanitto.view.SantaBottomButton
-            android:id="@+id/santabottombutton_finish"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/padding_entire"
-            android:layout_marginBottom="@dimen/margin_matched_buttons"
-            android:text="@string/finish_bottom_button"
-            app:darkShadow="true"
-            app:layout_constraintBottom_toTopOf="@id/santabottombutton_finish_exit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <org.sopt.santamanitto.view.SantaBottomButton
-            android:id="@+id/santabottombutton_finish_exit"
-            android:layout_width="match_parent"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearlayout_createroom_buttons"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/padding_entire"
             android:layout_marginBottom="@dimen/margin_bottombutton_bottom"
-            android:text="@string/matched_bottom_button_delete"
-            app:darkShadow="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent">
+
+            <org.sopt.santamanitto.view.SantaBottomButton
+                android:id="@+id/santabottombutton_return"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:enabled="true"
+                android:text="@string/finish_bottom_button_return"
+                app:isGrayButton="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/santabottombutton_finish"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <org.sopt.santamanitto.view.SantaBottomButton
+                android:id="@+id/santabottombutton_finish"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:enabled="true"
+                android:text="@string/finish_bottom_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/santabottombutton_return" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

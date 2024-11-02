@@ -8,7 +8,6 @@ import org.sopt.santamanitto.room.data.TempPersonalRoomModel
 import org.sopt.santamanitto.room.manittoroom.network.ManittoRoomMember
 import org.sopt.santamanitto.room.manittoroom.network.ManittoRoomModel
 import org.sopt.santamanitto.room.network.RoomRequest
-import org.sopt.santamanitto.user.data.controller.UserAuthController
 import org.sopt.santamanitto.user.data.source.UserMetadataSource
 import org.sopt.santamanitto.util.TimeUtil
 import javax.inject.Inject
@@ -16,7 +15,6 @@ import javax.inject.Inject
 @HiltViewModel
 class ManittoRoomViewModel @Inject constructor(
     private val userMetadataSource: UserMetadataSource,
-    private val userDataSource: UserAuthController,
     private val roomRequest: RoomRequest
 ) : NetworkViewModel() {
 
@@ -88,8 +86,7 @@ class ManittoRoomViewModel @Inject constructor(
                 manittoRoom.run {
                     _roomName.value = roomName
                     _expiration.value = expirationDate
-                    _isExpired.value =
-                        TimeUtil.getDayDiffFromNow(expirationDate) < 0
+                    _isExpired.value = TimeUtil.getDayDiffFromNow(expirationDate) < 0
                     _members.value = members
                     _invitationCode = invitationCode
                     _isAdmin.value = userMetadataSource.getUserId() == creator.userId
@@ -122,7 +119,7 @@ class ManittoRoomViewModel @Inject constructor(
         startLoading()
         roomRequest.getPersonalRoomInfo(roomId, object : RoomRequest.GetPersonalRoomInfoCallback {
             override fun onLoadPersonalRoomInfo(personalRoom: TempPersonalRoomModel) {
-                _mySantaName.value = personalRoom.manitto.username
+                _myManittoName.value = personalRoom.manitto.username
                 _myMission.value = personalRoom.mission.content
                 stopLoading()
             }

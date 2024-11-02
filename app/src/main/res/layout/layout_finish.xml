@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/padding_matched_cardview_vertical"
             android:text="@string/finish_title"
-            android:textSize="16sp"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,7 +41,7 @@
             android:paddingVertical="@dimen/padding_matched_manitto_vertical"
             android:text="@{vm.mySantaName}"
             android:textColor="@color/white"
-            android:textFontWeight="700"
+            android:textFontWeight="600"
             android:textSize="@dimen/size_matched_manitto"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,8 +54,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_matched_mission_title_bottom"
-            android:text="@string/matched_mission_title"
-            android:textSize="16sp"
+            android:text="@string/matched_mission_manitto_title"
+            android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@id/textview_finish_mission"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_matched_mission_bottom"
             android:background="@drawable/round_ractangle_background"
-            android:backgroundTint="@color/gray_1"
+            android:backgroundTint="@color/light_gray"
             android:maxLines="3"
             android:padding="@dimen/padding_matched_mission"
             android:text="\n\n"

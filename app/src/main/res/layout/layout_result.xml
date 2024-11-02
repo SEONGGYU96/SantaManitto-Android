@@ -19,21 +19,21 @@
             android:id="@+id/textview_result_title"
             style="@style/TitleOfCardView"
             android:layout_width="wrap_content"
-            android:textSize="16sp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/padding_createmission_cardview_horizontal"
             android:layout_marginTop="@dimen/padding_matched_cardview_vertical"
             android:text="@string/finish_title"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tool:text="총 16명"/>
+            tool:text="총 16명" />
 
         <View
             android:id="@+id/view_result_divider"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="@dimen/margin_result_divider_top"
-            android:background="@color/gray_1"
+            android:background="@color/light_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textview_result_title" />

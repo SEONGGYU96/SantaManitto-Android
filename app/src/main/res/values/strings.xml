@@ -99,13 +99,15 @@
     <string name="matched_bottom_button">마니또 하러 가기</string>
     <string name="matched_mission_title" formatted="false">%s 산타가 수행할 미션</string>
     <string name="matched_manitto_title" formatted="false">%s 산타의 마니또</string>
+    <string name="matched_mission_manitto_title">마니또가 나에게 수행한 미션</string>
     <string name="matched_no_mission">미션이 없습니다</string>
     <string name="matched_bottom_button_delete">나의 산타 마니또에서 삭제하기</string>
 
     <string name="finish_bottom_button">전체 결과 보기</string>
+    <string name="finish_bottom_button_return">홈으로 가기</string>
     <string name="finish_manitto_title">%d일동안의 산타 마니또 종료!\n나의 산타 마니또는 누구일까?</string>
-    <string name="finish_title">나를 챙겨준 산타는?</string>
-    <string name="result_bottom">홈으로 가기</string>
+    <string name="finish_title">나를 챙겨준 산타 마니또</string>
+    <string name="result_bottom">내 결과 보기</string>
     <string name="result_title">총 %d명</string>
 
     <string name="santanameinput_alert">・이름은 최대 %d자까지 설정 가능해</string>
@@ -116,9 +118,9 @@
 
     <string name="exit_dialog_host">방장이 나가면 친구들도\n방을 나가게 되는데 괜찮을까?</string>
     <string name="exit_dialog_host_confirm">방 나가기</string>
-    <string name="exit_dialog_host_cancel">방에 머무르기</string>
+    <string name="exit_dialog_host_cancel">방에 머물기</string>
     <string name="exit_dialog_guest">%s\n이 방을 나가는 거 맞지?</string>
-    <string name="exit_dialog_history">나의 산타 마니또에서\n삭제하는거 맞지?</string>
+    <string name="exit_dialog_history">한 번 나가면 마니또 방에 다시\n들어올 수 없어. 그래도 괜찮아?</string>
 
     <string name="setting_1_edit_name">이름 수정</string>
     <string name="setting_2_inquiry">문의하기</string>

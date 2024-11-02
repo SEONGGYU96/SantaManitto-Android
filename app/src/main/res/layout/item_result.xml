@@ -14,16 +14,19 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textview_itemresult_santa"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="14dp"
             android:background="@drawable/background_round_text"
             android:backgroundTint="@color/navy"
+            android:gravity="center"
             android:paddingHorizontal="@dimen/padding_itemresult_text_horizontal"
             android:paddingVertical="@dimen/padding_itemresult_text_vertical"
             android:textColor="@color/white"
-            android:textFontWeight="700"
-            android:textSize="15sp"
+            android:textFontWeight="600"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/imageview_itemresult_arrow"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tool:text="김성규" />
@@ -40,29 +43,22 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textview_itemresult_minitto"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
             android:background="@drawable/background_round_text"
             android:backgroundTint="@color/green"
+            android:gravity="center"
             android:paddingHorizontal="@dimen/padding_itemresult_text_horizontal"
             android:paddingVertical="@dimen/padding_itemresult_text_vertical"
             android:textColor="@color/white"
-            android:textFontWeight="700"
+            android:textFontWeight="600"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imageview_itemresult_arrow"
             app:layout_constraintTop_toTopOf="parent"
-            tool:text="이영진" />
-
-        <org.sopt.santamanitto.view.SantaLoading
-            android:id="@+id/santaloading_itemresult"
-            android:layout_width="match_parent"
-            tool:visibility="gone"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="@id/textview_itemresult_santa"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/textview_itemresult_santa" />
-
+            tool:text="이영진이영진이영진이" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
