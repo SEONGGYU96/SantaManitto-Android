@@ -130,6 +130,7 @@
     <string name="setting_2_inquiry">문의하기</string>
     <string name="setting_3_tos">서비스 이용약관</string>
     <string name="setting_4_privacy_policy">개인정보 처리방침</string>
+    <string name="editname_withdraw"><u>회원 탈퇴</u></string>
 
     <string name="update_dialog_content">원활한 산타마니또를 위해\n업데이트를 해야해!</string>
     <string name="update_dialog_exit">마니또 종료</string>
@@ -144,6 +145,8 @@
 
     <string name="splash_network_error_dialog">네트워크 연결이 불안정한 상태야.\n연결 상태를 확인해줘.</string>
     <string name="splash_network_error_dialog_button">확인 후 앱 닫기</string>
-
+    <string name="withdraw_dialog_title">탈퇴하면 소중한 추억이 담긴 마니또 내역을\n다시 확인할 수 없어. 그래도 괜찮아?</string>
+    <string name="withdraw_dialog_cancel">탈퇴하기</string>
+    <string name="withdraw_dialog_confirm">머무르기</string>
 
 </resources>
