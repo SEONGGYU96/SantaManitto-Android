@@ -37,7 +37,7 @@
             android:id="@+id/santabutton_finish_exit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="@dimen/margin_main_setting_top"
             android:padding="16dp"
             android:src="@drawable/ic_delete"
             app:layout_constraintEnd_toEndOf="parent"
