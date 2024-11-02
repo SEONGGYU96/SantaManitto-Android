@@ -36,9 +36,9 @@
     <string name="joinedroom_exit_room">방 나가기</string>
     <string name="joinedroom_manitto_info">%s의 산타</string>
     <string name="joinedroom_daydiff">공개 %d일 전</string>
-    <string name="joinedroom_state_done">결과 발표 완료</string>
+    <string name="joinedroom_state_done">결과 공개</string>
     <string name="joinedroom_state_matching">매칭 대기 중</string>
-    <string name="joinedroom_santa_info_before_matching">나의 산타는 누구?</string>
+    <string name="joinedroom_santa_info_before_matching">나의 산타는 누구일까?</string>
 
     <string name="santaloading_data_not_available">데이터를 불러오지 못했습니다.</string>
 
