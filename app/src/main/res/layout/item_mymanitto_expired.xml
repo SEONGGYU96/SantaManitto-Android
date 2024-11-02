@@ -40,19 +40,6 @@
                 app:layout_constraintVertical_bias="0.666">
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/textview_mymanitto_manittoinfo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:letterSpacing="-0.04"
-                    android:lineHeight="14dp"
-                    android:lineSpacingMultiplier="1.5"
-                    android:text="@string/joinedroom_santa_info_before_matching"
-                    android:textColor="@color/black"
-                    android:textFontWeight="500"
-                    android:textSize="14sp" />
-
-                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/textview_mymanitto_state"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
