@@ -50,6 +50,19 @@ class MainViewModel @Inject constructor(
         }
     }
 
+    fun deleteRoom(roomId: String) {
+        viewModelScope.launch {
+            roomRequest.deleteRoom(roomId).fold(
+                onSuccess = {
+                    refresh()
+                },
+                onFailure = {
+                    _networkErrorOccur.value = true
+                }
+            )
+        }
+    }
+
     fun refresh() {
         fetchMyManittoList()
     }

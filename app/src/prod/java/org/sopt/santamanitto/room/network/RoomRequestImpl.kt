@@ -111,10 +111,20 @@ class RoomRequestImpl(
     }
 
     override fun exitRoom(roomId: String, callback: (onSuccess: Boolean) -> Unit) {
-        roomService.exitRoom(ExitRoomRequestModel(roomId)).start(callback)
+        roomService.exitRoom(roomId).start(callback)
     }
 
     override fun removeHistory(roomId: String, callback: (onSuccess: Boolean) -> Unit) {
         roomService.removeHistory(roomId).start(callback)
+    }
+
+    override suspend fun deleteRoom(roomId: String): Result<Unit> {
+        val response = roomService.deleteRoom(roomId)
+
+        return if (response.statusCode == 200) {
+            Result.success(Unit)
+        } else {
+            Result.failure(Exception("Failed to delete room: ${response.message}"))
+        }
     }
 }

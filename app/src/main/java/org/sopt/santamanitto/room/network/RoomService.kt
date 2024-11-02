@@ -53,13 +53,18 @@ interface RoomService {
         @Path("roomId") roomId: String
     ): Call<SimpleResponse>
 
-    @POST("rooms/exit")
+    @POST("rooms/{roomId}/exit")
     fun exitRoom(
-        @Body request: ExitRoomRequestModel
+        @Path("roomId") roomId: String
     ): Call<SimpleResponse>
 
     @DELETE("rooms/{roomId}/history")
     fun removeHistory(
         @Path("roomId") roomId: String
     ): Call<SimpleResponse>
+
+    @DELETE("rooms/{roomId}")
+    suspend fun deleteRoom(
+        @Path("roomId") roomId: String
+    ): SimpleResponse
 }
