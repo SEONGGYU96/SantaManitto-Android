@@ -21,7 +21,8 @@ import org.sopt.santamanitto.util.base.BaseFragment
 import org.sopt.santamanitto.view.dialog.RoundDialogBuilder
 
 @AndroidEntryPoint
-class WaitingRoomFragment : BaseFragment<FragmentWaitingRoomBinding>(R.layout.fragment_waiting_room, false) {
+class WaitingRoomFragment :
+    BaseFragment<FragmentWaitingRoomBinding>(R.layout.fragment_waiting_room, false) {
     companion object {
         const val INVITATION_CODE_LABEL = "InvitationCode"
     }
