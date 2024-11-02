@@ -9,8 +9,8 @@ import org.sopt.santamanitto.R
 import org.sopt.santamanitto.databinding.ItemMymanittoBinding
 import org.sopt.santamanitto.room.data.TempMyManittoModel
 import org.sopt.santamanitto.room.data.TempPersonalRoomModel
+import org.sopt.santamanitto.room.data.getRoomState
 import org.sopt.santamanitto.room.network.RoomRequest
-import org.sopt.santamanitto.user.data.controller.UserAuthController
 import org.sopt.santamanitto.user.data.source.UserMetadataSource
 import org.sopt.santamanitto.util.TimeUtil
 import org.sopt.santamanitto.view.recyclerview.BaseViewHolder
@@ -18,7 +18,6 @@ import org.sopt.santamanitto.view.setBackgroundTint
 
 class BasicMyManittoViewHolder(
     parent: ViewGroup,
-    private val userAuthController: UserAuthController,
     private val roomRequest: RoomRequest,
     private val userMetadataSource: UserMetadataSource,
     private val cachedRoomInfo: HashMap<String, MyManittoInfoModel>,
@@ -127,29 +126,33 @@ class BasicMyManittoViewHolder(
         loadingBar.visibility = View.GONE
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     private fun setRoomState(data: TempMyManittoModel) {
-        if (data.matchingDate != null) {
-            showExitButton(false)
-            if (data.expirationDate != null && !TimeUtil.isExpired(data.expirationDate)) {
-                // 마니또 진행 중
-                val daysUntilExpiration = TimeUtil.getDayDiffFromNow(data.expirationDate)
-                stateText.text =
-                    String.format(
-                        getString(R.string.joinedroom_daydiff),
-                        daysUntilExpiration
-                    )
+        when (data.getRoomState()) {
+            RoomState.IN_PROGRESS -> {
+                showExitButton(false)
+                val daysUntilExpiration = TimeUtil.getDayDiffFromNow(data.expirationDate!!)
+                stateText.text = String.format(
+                    getString(R.string.joinedroom_daydiff),
+                    daysUntilExpiration
+                )
                 stateText.setBackgroundTint(R.color.red)
-            } else {
-                // 결과 발표 완료 시
+            }
+
+            RoomState.WAITING -> {
+                stateText.text = getString(R.string.joinedroom_state_matching)
+                stateText.setBackgroundTint(R.color.dark_gray)
+                showExitButton(true)
+            }
+
+            RoomState.FINISHED -> {
+                showExitButton(false)
                 stateText.text = getString(R.string.joinedroom_state_done)
                 stateText.setBackgroundTint(R.color.gray_2)
             }
-        } else {
-            // 마니또 매칭 전
-            stateText.text = getString(R.string.joinedroom_state_matching)
-            stateText.setBackgroundTint(R.color.dark_gray)
-            showExitButton(true)
+
+            else -> {
+                throw IllegalStateException("Unexpected room state in BasicMyManittoViewHolder")
+            }
         }
     }
 

@@ -29,7 +29,7 @@ class ExpiredMyManittoViewHolder(
         }
         enterListener?.let {
             binding.root.setOnClickListener {
-                it(roomId, false, false)
+                it(roomId, false, true)
             }
         }
         content.text = itemView.context.getString(R.string.mymanitto_epired_content)

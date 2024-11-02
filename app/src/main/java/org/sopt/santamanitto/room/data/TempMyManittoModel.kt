@@ -2,6 +2,8 @@ package org.sopt.santamanitto.room.data
 
 
 import com.google.gson.annotations.SerializedName
+import org.sopt.santamanitto.main.list.RoomState
+import org.sopt.santamanitto.util.TimeUtil
 
 data class TempMyManittoModel(
     @SerializedName("createdAt")
@@ -61,4 +63,25 @@ data class TempMyManittoModel(
         @SerializedName("id")
         val id: String?
     )
+}
+
+fun TempMyManittoModel.getRoomState(): RoomState {
+    return when {
+        // 삭제된 방
+        deletedByCreatorDate != null -> RoomState.DELETED
+        // 진행중인 방 (매칭됨 && 만료되지 않음)
+        matchingDate != null && expirationDate != null &&
+                !TimeUtil.isExpired(expirationDate) -> RoomState.IN_PROGRESS
+        // 대기중인 방 (매칭 안됨 && 만료되지 않음)
+        matchingDate == null && expirationDate != null &&
+                !TimeUtil.isExpired(expirationDate) -> RoomState.WAITING
+        // 종료된 방 (매칭됨 && 만료됨)
+        matchingDate != null && expirationDate != null &&
+                TimeUtil.isExpired(expirationDate) -> RoomState.FINISHED
+        // 만료된 방 (매칭 안됨 && 만료됨)
+        matchingDate == null && expirationDate != null &&
+                TimeUtil.isExpired(expirationDate) -> RoomState.EXPIRED
+
+        else -> RoomState.LEFT
+    }
 }

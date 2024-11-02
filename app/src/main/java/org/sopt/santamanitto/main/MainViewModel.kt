@@ -10,6 +10,7 @@ import kotlinx.coroutines.launch
 import org.sopt.santamanitto.NetworkViewModel
 import org.sopt.santamanitto.room.data.TempMyManittoModel
 import org.sopt.santamanitto.room.network.RoomRequest
+import org.sopt.santamanitto.util.RoomSortUtil
 import javax.inject.Inject
 
 @HiltViewModel
@@ -29,7 +30,7 @@ class MainViewModel @Inject constructor(
             _isLoading.value = true
             try {
                 val rooms = roomRequest.getRooms()
-                _myManittoModelList.emit(rooms)
+                _myManittoModelList.emit(RoomSortUtil.getSortedRooms(rooms))
             } catch (e: Exception) {
                 _networkErrorOccur.value = true
             } finally {

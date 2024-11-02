@@ -5,7 +5,6 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.FragmentComponent
 import org.sopt.santamanitto.room.network.RoomRequest
-import org.sopt.santamanitto.user.data.controller.UserAuthController
 import org.sopt.santamanitto.user.data.source.UserMetadataSource
 
 @InstallIn(FragmentComponent::class)
@@ -13,8 +12,7 @@ import org.sopt.santamanitto.user.data.source.UserMetadataSource
 class AdapterModule {
     @Provides
     fun provideJoinedRoomAdapter(
-        userAuthController: UserAuthController,
         userMetadataSource: UserMetadataSource,
         roomRequest: RoomRequest
-    ): MyManittoListAdapter = MyManittoListAdapter(userAuthController, userMetadataSource, roomRequest)
+    ): MyManittoListAdapter = MyManittoListAdapter(userMetadataSource, roomRequest)
 }
