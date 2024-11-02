@@ -27,40 +27,45 @@
             app:santaDescription="@string/joinroom_background_description"
             app:santaTitle="@string/joinroom_background_title" />
 
-        <View
-            android:id="@+id/view_joinroom_guideline"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="@dimen/margin_santabackground_description_bottom"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="@id/santabackground_joinroom"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textview_joinroom_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_entire"
+            android:layout_marginTop="40dp"
+            android:text="@string/joinroom_title"
+            android:textFontWeight="600"
+            android:textSize="@dimen/size_signin_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/santabackground_joinroom" />
 
-        <org.sopt.santamanitto.view.SantaCardView
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/padding_entire"
             android:layout_marginTop="@dimen/margin_cardview_to_guidline_top"
-            android:layout_marginBottom="@dimen/margin_createroom_cardview_bottom"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view_joinroom_guideline"
-            app:moreRound="true">
+            app:layout_constraintTop_toBottomOf="@id/textview_joinroom_title"
+            app:moreRound="true"
+            app:strokeColor="@color/light_gray"
+            app:strokeWidth="1dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingHorizontal="@dimen/padding_cardview_horizontal"
-                android:paddingVertical="@dimen/padding_cardview_vertical">
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="24dp">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/textview_joinroom_cardtitle"
                     style="@style/TitleOfCardView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="참여 코드 입력"
-                    android:textSize="@dimen/size_createmission_cardview_title"
+                    android:text="@string/joinroom_card_title"
+                    android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -78,7 +83,7 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </org.sopt.santamanitto.view.SantaCardView>
+        </com.google.android.material.card.MaterialCardView>
 
         <org.sopt.santamanitto.view.SantaBottomButton
             android:id="@+id/santabottomButton_joinroom"

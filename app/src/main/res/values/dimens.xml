@@ -8,7 +8,7 @@
     <dimen name="margin_space_letter">4dp</dimen>
     <dimen name="padding_cardview_horizontal">20dp</dimen>
     <dimen name="padding_cardview_vertical">25dp</dimen>
-    <dimen name="margin_cardview_to_guidline_top">16dp</dimen>
+    <dimen name="margin_cardview_to_guidline_top">30dp</dimen>
 
     <dimen name="margin_dialog_title_text_vertical">20dp</dimen>
     <dimen name="margin_dialog_button_text_vertical">22dp</dimen>
@@ -138,7 +138,7 @@
     <dimen name="margin_createconfirm_divider_top">20dp</dimen>
     <dimen name="margin_createconfirm_no_mission_vertical">25dp</dimen>
 
-    <dimen name="margin_joinroom_edittext_top">10dp</dimen>
+    <dimen name="margin_joinroom_edittext_top">20dp</dimen>
 
     <dimen name="margin_waitingroom_cardview_bottom">60dp</dimen>
     <dimen name="padding_waitingroom_invitation_code_horizontal">16dp</dimen>
