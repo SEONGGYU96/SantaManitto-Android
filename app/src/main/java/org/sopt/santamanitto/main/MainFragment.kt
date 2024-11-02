@@ -49,6 +49,8 @@ class MainFragment : Fragment() {
                 constraintlayoutMainNomymanitto.visibility = View.VISIBLE
             }
 
+        binding.santabackgroundMain.isBackKeyEnabled = false
+
         subscribeUI()
 
         setOnClickListener()
