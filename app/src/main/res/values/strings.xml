@@ -118,9 +118,9 @@
 
     <string name="exit_dialog_host">방장이 나가면 친구들도\n방을 나가게 되는데 괜찮을까?</string>
     <string name="exit_dialog_host_confirm">방 나가기</string>
-    <string name="exit_dialog_host_cancel">방에 머무르기</string>
+    <string name="exit_dialog_host_cancel">방에 머물기</string>
     <string name="exit_dialog_guest">%s\n이 방을 나가는 거 맞지?</string>
-    <string name="exit_dialog_history">나의 산타 마니또에서\n삭제하는거 맞지?</string>
+    <string name="exit_dialog_history">한 번 나가면 마니또 방에 다시\n들어올 수 없어. 그래도 괜찮아?</string>
 
     <string name="setting_1_edit_name">이름 수정</string>
     <string name="setting_2_inquiry">문의하기</string>

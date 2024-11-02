@@ -10,7 +10,6 @@ import org.sopt.santamanitto.room.manittoroom.network.ManittoRoomModel
 import org.sopt.santamanitto.room.network.RoomRequest
 import org.sopt.santamanitto.user.data.source.UserMetadataSource
 import org.sopt.santamanitto.util.TimeUtil
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -133,7 +132,6 @@ class ManittoRoomViewModel @Inject constructor(
 
     fun removeHistory(callback: () -> Unit) {
         roomRequest.removeHistory(roomId) { isRemoved ->
-            Timber.tag("qqqq").d("$isRemoved")
             if (isRemoved) {
                 callback.invoke()
             } else {

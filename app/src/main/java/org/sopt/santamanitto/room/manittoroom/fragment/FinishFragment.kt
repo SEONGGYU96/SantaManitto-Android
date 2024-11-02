@@ -16,7 +16,6 @@ import org.sopt.santamanitto.room.manittoroom.ManittoRoomViewModel
 import org.sopt.santamanitto.room.manittoroom.ResultAdapter
 import org.sopt.santamanitto.util.BindingAdapters.setLayoutHeight
 import org.sopt.santamanitto.view.dialog.RoundDialogBuilder
-import timber.log.Timber
 import android.view.View.OnLayoutChangeListener as OnLayoutChangeListener1
 
 @AndroidEntryPoint
@@ -138,16 +137,13 @@ class FinishFragment : Fragment() {
 
     private fun showExitDialog() {
         if (viewModel.roomName.value == null) {
-            Timber.tag(TAG).e("showExitDialog(): roomName is null")
             return
         }
         RoundDialogBuilder()
             .setContentText(requireContext().getString(R.string.exit_dialog_history))
-            .addHorizontalButton(requireContext().getString(R.string.dialog_cancel))
-            .addHorizontalButton(requireContext().getString(R.string.dialog_confirm)) {
-                Timber.tag("qqqq").d("showExitDialog")
+            .addHorizontalButton(requireContext().getString(R.string.exit_dialog_host_cancel))
+            .addHorizontalButton(requireContext().getString(R.string.exit_dialog_host_confirm)) {
                 viewModel.removeHistory {
-                    Timber.tag("qqqq").d("removeHistory")
                     requireActivity().finish()
                 }
             }
