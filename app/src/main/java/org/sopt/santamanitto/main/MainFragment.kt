@@ -125,7 +125,7 @@ class MainFragment : Fragment() {
                 }.show(childFragmentManager, "exit")
             }
             setOnRemoveClickListener { roomId ->
-                viewModel.exitRoom(roomId)
+                viewModel.deleteRoom(roomId)
             }
         }
     }
