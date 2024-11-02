@@ -5,6 +5,7 @@ import org.sopt.santamanitto.network.start
 import org.sopt.santamanitto.user.data.UserInfoModel
 import org.sopt.santamanitto.user.mypage.UserNameRequestModel
 import org.sopt.santamanitto.user.network.UserAuthService
+import timber.log.Timber
 
 class RetrofitUserAuthController(private val userAuthService: UserAuthService) :
     UserAuthController {
@@ -38,5 +39,19 @@ class RetrofitUserAuthController(private val userAuthService: UserAuthService) :
                 }
             },
         )
+    }
+
+    override suspend fun withdraw(): Result<Unit> {
+        return try {
+            val response = userAuthService.withdraw()
+            if (response.statusCode == 200) {
+                Result.success(Unit)
+            } else {
+                Result.failure(Exception("Failed to withdraw: ${response.message}"))
+            }
+        } catch (e: Exception) {
+            Timber.e("${e.message}")
+            Result.failure(e)
+        }
     }
 }
