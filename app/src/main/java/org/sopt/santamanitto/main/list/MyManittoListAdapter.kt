@@ -5,15 +5,13 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.ListAdapter
 import org.sopt.santamanitto.room.data.TempMyManittoModel
+import org.sopt.santamanitto.room.data.getRoomState
 import org.sopt.santamanitto.room.network.RoomRequest
-import org.sopt.santamanitto.user.data.controller.UserAuthController
 import org.sopt.santamanitto.user.data.source.UserMetadataSource
 import org.sopt.santamanitto.util.ItemDiffCallback
-import org.sopt.santamanitto.util.TimeUtil.isExpired
 import org.sopt.santamanitto.view.recyclerview.BaseViewHolder
 
 class MyManittoListAdapter(
-    private val userAuthController: UserAuthController,
     private val userMetadataSource: UserMetadataSource,
     private val roomRequest: RoomRequest
 ) : ListAdapter<TempMyManittoModel, BaseViewHolder<TempMyManittoModel, *>>(DiffUtil) {
@@ -34,7 +32,6 @@ class MyManittoListAdapter(
             VIEW_TYPE_EXPIRED -> ExpiredMyManittoViewHolder(parent, enterListener, removeListener)
             else -> BasicMyManittoViewHolder(
                 parent,
-                userAuthController,
                 roomRequest,
                 userMetadataSource,
                 cachedMyManittoInfoModel,
@@ -67,11 +64,12 @@ class MyManittoListAdapter(
     override fun getItemViewType(position: Int): Int {
         val item = currentList[position]
 
-        return when {
-            item.deletedByCreatorDate != null -> VIEW_TYPE_REMOVED  // 삭제된 경우
-            item.expirationDate != null && item.matchingDate == null && isExpired(item.expirationDate) -> VIEW_TYPE_EXPIRED  // 매칭되지 않고 만료된 경우
-            else -> VIEW_TYPE_DEFAULT  // 기본
+        return when (item.getRoomState()) {
+            RoomState.DELETED -> VIEW_TYPE_REMOVED
+            RoomState.EXPIRED -> VIEW_TYPE_EXPIRED
+            else -> VIEW_TYPE_DEFAULT
         }
+
     }
 
     fun clear() {
