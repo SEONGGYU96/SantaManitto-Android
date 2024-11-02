@@ -47,6 +47,7 @@
                     android:lineHeight="14dp"
                     android:text="@string/joinedroom_santa_info_before_matching"
                     android:textColor="@color/black"
+                    android:textFontWeight="500"
                     android:textSize="14sp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -89,6 +90,8 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/round_ractangle_background_4"
                     android:backgroundTint="@color/gray_3"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
                     android:paddingHorizontal="16dp"
                     android:paddingVertical="6dp"
                     android:text="@string/joinedroom_exit_room"
