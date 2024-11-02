@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
 
     <data>
 
@@ -40,6 +41,7 @@
             app:layout_constraintTop_toBottomOf="@id/santabackground_joinroom" />
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardview_joinroom"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/padding_entire"
@@ -71,6 +73,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <org.sopt.santamanitto.view.SantaEditText
+                    android:id="@+id/edittext_joinroom_invitationcode"
                     setText="@={viewModel.invitationCode}"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/height_santaedittext_big"
@@ -84,6 +87,43 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_joinroom_alert"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@id/cardview_joinroom"
+            app:layout_constraintStart_toStartOf="@id/cardview_joinroom"
+            app:layout_constraintTop_toBottomOf="@id/cardview_joinroom"
+            tool:visibility="visible">
+
+            <ImageView
+                android:id="@+id/imageview_invitecode_alert"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_alert"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_invitecode_alert"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/red"
+                android:textFontWeight="500"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/imageview_invitecode_alert"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imageview_invitecode_alert"
+                app:layout_constraintTop_toTopOf="@id/imageview_invitecode_alert"
+                tool:text="이미 참여중인 방이야!" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <org.sopt.santamanitto.view.SantaBottomButton
             android:id="@+id/santabottomButton_joinroom"

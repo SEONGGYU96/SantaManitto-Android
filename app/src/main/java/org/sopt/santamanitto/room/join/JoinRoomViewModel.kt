@@ -22,10 +22,6 @@ class JoinRoomViewModel @Inject constructor(
         it.isNullOrEmpty()
     }
 
-    private val _isDuplicatedMember = MutableLiveData(false)
-    val isDuplicatedMember: LiveData<Boolean>
-        get() = _isDuplicatedMember
-
     private val _isWrongInvitationCode = MutableLiveData(false)
     val isWrongInvitationCode: LiveData<Boolean>
         get() = _isWrongInvitationCode
@@ -50,7 +46,6 @@ class JoinRoomViewModel @Inject constructor(
                     when (joinRoomError) {
                         JoinRoomError.WrongInvitationCode -> _isWrongInvitationCode.value = true
                         JoinRoomError.AlreadyMatched -> _isAlreadyMatchedRoom.value = true
-                        JoinRoomError.DuplicatedMember -> _isDuplicatedMember.value = true
                         JoinRoomError.AlreadyEntered -> _isAlreadyEnteredRoom.value = true
                         else -> _networkErrorOccur.value = true
                     }
