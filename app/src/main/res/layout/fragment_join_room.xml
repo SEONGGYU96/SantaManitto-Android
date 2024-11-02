@@ -24,7 +24,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:santaDescription="@string/joinroom_background_description"
+            app:middleTitle="@string/joinroom_background_description"
             app:santaTitle="@string/joinroom_background_title" />
 
         <androidx.appcompat.widget.AppCompatTextView
