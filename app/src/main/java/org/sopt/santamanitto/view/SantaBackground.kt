@@ -189,6 +189,10 @@ class SantaBackground @JvmOverloads constructor(
         }
     }
 
+    fun setMiddleTitleFontWeight(fontWeight: Int) {
+        middleTitleTextView.setTypeface(middleTitleTextView.typeface, fontWeight)
+    }
+
     //실제 뷰 크기가 측정되었을 때 특정 길이보다 길면 거기에 맞춤
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
