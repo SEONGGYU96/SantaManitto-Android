@@ -77,8 +77,10 @@
     <string name="createconfirm_done_dialog">초대 코드를 복사해서\n친구들에게 공유해 주자!</string>
 
     <string name="joinroom_background_title">방 입장하기</string>
-    <string name="joinroom_background_description">코드를 입력하고 초대된 방으로\n산타 마니또를 찾아 떠나볼까?</string>
-    <string name="joinroom_participation_code_hint">초대 코드 입력 시, 공백을 조심해줘!</string>
+    <string name="joinroom_title">초대코드 입력</string>
+    <string name="joinroom_card_title">초대코드</string>
+    <string name="joinroom_background_description">산타가 초대한 방으로\n마니또를 찾아 떠나볼까?</string>
+    <string name="joinroom_participation_code_hint">코드를 입력하면 방에 들어갈 수 있어!</string>
     <string name="joinroom_dialog_duplicated_member">이미 참여 중인 방이야!</string>
     <string name="joinroom_dialog_already_matched">이미 입장한 방이야!</string>
     <string name="joinroom_dialog_wrong_invitation_code">참여가 불가능한 방이야!\n혹시 초대 코드에 공백이 있는지 확인해줘!</string>
