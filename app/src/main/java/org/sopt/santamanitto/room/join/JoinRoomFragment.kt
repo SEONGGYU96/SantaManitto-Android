@@ -2,6 +2,8 @@ package org.sopt.santamanitto.room.join
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -12,15 +14,9 @@ import org.sopt.santamanitto.room.join.network.JoinRoomModel
 import org.sopt.santamanitto.room.manittoroom.ManittoRoomActivity
 import org.sopt.santamanitto.util.FragmentUtil.hideKeyboardOnOutsideEditText
 import org.sopt.santamanitto.util.base.BaseFragment
-import org.sopt.santamanitto.view.dialog.RoundDialogBuilder
-import timber.log.Timber
 
 @AndroidEntryPoint
 class JoinRoomFragment : BaseFragment<FragmentJoinRoomBinding>(R.layout.fragment_join_room, false) {
-
-    companion object {
-        private const val TAG = "JoinRoomFragment"
-    }
 
     private val joinRoomViewModel: JoinRoomViewModel by viewModels()
 
@@ -31,21 +27,38 @@ class JoinRoomFragment : BaseFragment<FragmentJoinRoomBinding>(R.layout.fragment
         hideKeyboardOnOutsideEditText()
 
         binding.santabackgroundJoinroom.setMiddleTitleFontWeight(500)
+
+        observeSantaEditText()
+    }
+
+    private fun observeSantaEditText() {
+        binding.edittextJoinroomInvitationcode.addTextChangeListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                hideWarningMessage()
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                if (p0.isNullOrEmpty()) {
+                    disableJoinButton()
+                } else {
+                    enableJoinButton()
+                }
+            }
+        })
     }
 
     private fun subscribeUI() {
         joinRoomViewModel.run {
             isAlreadyMatchedRoom.observe(
-                viewLifecycleOwner, ::showAlreadyMatchedDialog
-            )
-            isDuplicatedMember.observe(
-                viewLifecycleOwner, ::showDuplicatedMemberDialog
+                viewLifecycleOwner, ::handleAlreadyMatchedError
             )
             isWrongInvitationCode.observe(
-                viewLifecycleOwner, ::showWrongInvitationCodeDialog
+                viewLifecycleOwner, ::handleWrongInvitationCodeError
             )
             isAlreadyEnteredRoom.observe(
-                viewLifecycleOwner, ::showAlreadyEnteredDialog
+                viewLifecycleOwner, ::handleAlreadyJoinedError
             )
         }
     }
@@ -71,36 +84,42 @@ class JoinRoomFragment : BaseFragment<FragmentJoinRoomBinding>(R.layout.fragment
         findNavController().navigateUp()
     }
 
-    private fun showAlreadyMatchedDialog(isShow: Boolean) {
+    private fun showWarningMessage(message: String) {
+        binding.clJoinroomAlert.visibility = View.VISIBLE
+        binding.textviewInvitecodeAlert.text = message
+        disableJoinButton()
+    }
+
+    // 이미 매칭 진행된 방일 때 경고 메시지 처리
+    private fun handleAlreadyMatchedError(isShow: Boolean) {
         if (isShow) {
-            showErrorDialog(getString(R.string.joinroom_dialog_already_matched))
+            showWarningMessage(getString(R.string.joinroom_alert_already_matched))
         }
     }
 
-    private fun showDuplicatedMemberDialog(isShow: Boolean) {
+    // 잘못된 초대 코드일 때 경고 메시지 처리
+    private fun handleWrongInvitationCodeError(isShow: Boolean) {
         if (isShow) {
-            showErrorDialog(getString(R.string.joinroom_dialog_duplicated_member))
+            showWarningMessage(getString(R.string.joinroom_alert_wrong_invitation_code))
         }
     }
 
-    private fun showWrongInvitationCodeDialog(isShow: Boolean) {
+    // 이미 방에 입장했을 때 경고 메시지 처리
+    private fun handleAlreadyJoinedError(isShow: Boolean) {
         if (isShow) {
-            showErrorDialog(getString(R.string.joinroom_dialog_wrong_invitation_code))
+            showWarningMessage(getString(R.string.joinroom_alert_already_joined))
         }
     }
 
-    private fun showAlreadyEnteredDialog(isShow: Boolean) {
-        if (isShow) {
-            showErrorDialog(getString(R.string.joinroom_dialog_already_entered))
-        }
+    private fun hideWarningMessage() {
+        binding.clJoinroomAlert.visibility = View.GONE
     }
 
-    private fun showErrorDialog(message: String) {
-        Timber.d("showErrorDialog: $message")
-        RoundDialogBuilder()
-            .setContentText(message)
-            .addHorizontalButton(getString(R.string.dialog_confirm))
-            .build()
-            .show(parentFragmentManager, "error_dialog")
+    private fun disableJoinButton() {
+        binding.santabottomButtonJoinroom.isEnabled = false
+    }
+
+    private fun enableJoinButton() {
+        binding.santabottomButtonJoinroom.isEnabled = true
     }
 }

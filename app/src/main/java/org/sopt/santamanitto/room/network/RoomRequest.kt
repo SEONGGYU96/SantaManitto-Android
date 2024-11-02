@@ -36,7 +36,7 @@ interface RoomRequest {
     }
 
     enum class JoinRoomError {
-        WrongInvitationCode, DuplicatedMember, AlreadyMatched, AlreadyEntered, Els
+        WrongInvitationCode, AlreadyMatched, AlreadyEntered, Els
     }
 
     suspend fun getRooms(): List<TempMyManittoModel>
