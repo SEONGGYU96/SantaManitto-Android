@@ -120,7 +120,7 @@
     <string name="editname_finish">이름을 성공적으로 변경했어!</string>
     <string name="editname_button">이름 수정 완료</string>
 
-    <string name="exit_dialog_host">방장이 나가면 친구들도\n방을 나가게 되는데 괜찮을까?</string>
+    <string name="exit_dialog_host">방장이 나가면 재입장할 수 없고\n친구들도 더 이상 방에 접속할 수 없어!</string>
     <string name="exit_dialog_host_confirm">방 나가기</string>
     <string name="exit_dialog_host_cancel">방에 머물기</string>
     <string name="exit_dialog_guest">%s\n이 방을 나가는 거 맞지?</string>
