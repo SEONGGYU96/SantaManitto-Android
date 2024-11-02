@@ -28,7 +28,7 @@ class MyManittoListAdapter(
         viewType: Int
     ): BaseViewHolder<TempMyManittoModel, *> {
         return when (viewType) {
-            VIEW_TYPE_REMOVED -> RemovedMyManttioViewHolder(parent, removeListener)
+            VIEW_TYPE_REMOVED -> RemovedMyManittoViewHolder(parent, removeListener)
             VIEW_TYPE_EXPIRED -> ExpiredMyManittoViewHolder(parent, enterListener, removeListener)
             else -> BasicMyManittoViewHolder(
                 parent,
@@ -48,7 +48,7 @@ class MyManittoListAdapter(
                 holder.bind(getItem(position))
             }
 
-            is RemovedMyManttioViewHolder -> {
+            is RemovedMyManittoViewHolder -> {
                 holder.clear()
                 holder.bind(getItem(position))
             }

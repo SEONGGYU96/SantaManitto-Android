@@ -6,7 +6,7 @@ import org.sopt.santamanitto.databinding.ItemMymanittoRemovedBinding
 import org.sopt.santamanitto.room.data.TempMyManittoModel
 import org.sopt.santamanitto.view.recyclerview.BaseViewHolder
 
-class RemovedMyManttioViewHolder(
+class RemovedMyManittoViewHolder(
     parent: ViewGroup,
     removeListener: ((roomId: String) -> Unit)?
 ) : BaseViewHolder<TempMyManittoModel, ItemMymanittoRemovedBinding>(
