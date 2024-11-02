@@ -75,7 +75,7 @@ class BasicMyManittoViewHolder(
 
     override fun clear() {
         roomName.text = ""
-        contentText.text = getString(R.string.joinedroom_santa_info_before_matching)
+        contentText.text = ""
         stateText.text = ""
         missionText.text = ""
         loadingBar.visibility = View.VISIBLE
@@ -118,7 +118,7 @@ class BasicMyManittoViewHolder(
             contentText.text =
                 String.format(getString(R.string.joinedroom_manitto_info), info.manittoName)
         } else {
-            contentText.text = getString(R.string.joinedroom_santa_info_before_matching)
+            contentText.text = ""
         }
     }
 
