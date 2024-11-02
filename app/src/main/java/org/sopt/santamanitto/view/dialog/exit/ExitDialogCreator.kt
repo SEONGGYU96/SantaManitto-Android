@@ -16,16 +16,8 @@ object ExitDialogCreator {
         }
         return RoundDialogBuilder()
             .setContentText(message)
-            .addHorizontalButton(
-                if (isHost) context.getString(R.string.exit_dialog_host_cancel) else context.getString(
-                    R.string.dialog_cancel
-                )
-            )
-            .addHorizontalButton(
-                if (isHost) context.getString(R.string.exit_dialog_host_confirm) else context.getString(
-                    R.string.dialog_confirm
-                )
-            ) {
+            .addHorizontalButton(context.getString(R.string.exit_dialog_host_cancel))
+            .addHorizontalButton(context.getString(R.string.exit_dialog_host_confirm)) {
                 listener()
             }
             .build()
