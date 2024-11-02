@@ -6,7 +6,8 @@
 
     <org.sopt.santamanitto.view.SantaCardView
         android:layout_width="@dimen/width_mymanitto_viewholder"
-        android:layout_height="@dimen/height_mymanitto_viewholder">
+        android:layout_height="@dimen/height_mymanitto_viewholder"
+        app:cardBackgroundColor="@color/gray_3">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -15,12 +16,12 @@
             android:paddingVertical="@dimen/padding_mymanitto_veertical">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textview_mymanitto_title"
+                android:id="@+id/textview_mymanittoexpried_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:textColor="@color/navy"
+                android:textColor="@color/dark_gray"
                 android:textFontWeight="600"
                 android:textSize="@dimen/size_mymanitto_title"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -35,7 +36,7 @@
                 android:orientation="vertical"
                 app:layout_constraintBottom_toTopOf="@id/framelayout_mymanitto_bottoms"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textview_mymanitto_title"
+                app:layout_constraintTop_toBottomOf="@id/textview_mymanittoexpried_title"
                 app:layout_constraintVertical_bias="0.666">
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -45,25 +46,24 @@
                     android:layout_marginBottom="10dp"
                     android:letterSpacing="-0.04"
                     android:lineHeight="14dp"
+                    android:lineSpacingMultiplier="1.5"
                     android:text="@string/joinedroom_santa_info_before_matching"
                     android:textColor="@color/black"
                     android:textFontWeight="500"
-                    android:lineSpacingMultiplier="1.5"
-                    android:textSize="14sp"
-                    tool:text="동민동민동민동민동민의 산타 " />
+                    android:textSize="14sp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/textview_mymanitto_state"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/round_ractangle_background_30"
-                    android:backgroundTint="@color/red"
+                    android:backgroundTint="@color/light_gray"
                     android:paddingHorizontal="@dimen/padding_mymanitto_daydiff_textview_horizontal"
                     android:paddingVertical="@dimen/padding_mymanitto_daydiff_textview_vertical"
+                    android:text="@string/main_room_expired"
                     android:textColor="@color/white"
                     android:textFontWeight="500"
-                    android:textSize="@dimen/size_mymanitto_state_text"
-                    tool:text="공개 1일 전" />
+                    android:textSize="@dimen/size_mymanitto_state_text" />
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -73,49 +73,21 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/textview_mymanitto_mission"
+                <TextView
+                    android:id="@+id/textview_mymanittoexpired_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:letterSpacing="-0.06"
-                    android:lineHeight="@dimen/lineheight_mymanitto_mission_text"
-                    android:textColor="@color/dark_gray"
-                    android:textSize="@dimen/size_mymanitto_mission_text"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tool:text="여기는 미션을 알려주는 공간입니다아 최대 2줄임" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button_mymanitto_exit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/round_ractangle_background_4"
-                    android:backgroundTint="@color/gray_3"
-                    android:minWidth="0dp"
-                    android:minHeight="0dp"
+                    android:background="@drawable/round_ractangle_background_4_border"
                     android:paddingHorizontal="16dp"
                     android:paddingVertical="6dp"
-                    android:text="@string/joinedroom_exit_room"
+                    android:text="@string/main_exit_room"
                     android:textColor="@color/dark_gray"
                     android:textFontWeight="500"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tool:visibility="gone" />
+                    app:layout_constraintStart_toStartOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <org.sopt.santamanitto.view.SantaLoading
-                android:id="@+id/santaloading_joinedroom"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tool:visibility="gone" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

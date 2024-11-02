@@ -28,10 +28,12 @@
 
     <string name="main_make_room">방 만들기</string>
     <string name="main_join_room">방 입장하기</string>
+    <string name="main_exit_room">방 나가기</string>
     <string name="main_make_room_description">새로운 산타 마니또\n시작하기</string>
     <string name="main_join_room_description">초대 코드 입력 후\n마니또 방 들어가기</string>
     <string name="main_my_manitto_history">나의 산타 마니또</string>
     <string name="main_no_manitto_notice">친구들과 산타 마니또를 시작해 볼까?</string>
+    <string name="main_room_expired">기한 만료</string>
 
     <string name="joinedroom_exit_room">방 나가기</string>
     <string name="joinedroom_manitto_info">%s의 산타</string>
