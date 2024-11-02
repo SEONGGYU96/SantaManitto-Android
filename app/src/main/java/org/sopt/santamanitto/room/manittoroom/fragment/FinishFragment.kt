@@ -22,7 +22,6 @@ import android.view.View.OnLayoutChangeListener as OnLayoutChangeListener1
 class FinishFragment : Fragment() {
 
     companion object {
-        private const val TAG = "FinishFragment"
         private const val SCREEN_KEY = "isFinishScreen"
     }
 
