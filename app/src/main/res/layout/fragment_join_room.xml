@@ -92,7 +92,7 @@
             android:layout_marginHorizontal="@dimen/padding_entire"
             android:layout_marginBottom="@dimen/margin_bottombutton_bottom"
             android:enabled="@{!viewModel.isInvitationCodeEmpty()}"
-            android:text="@string/button_next"
+            android:text="@string/joinroome_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

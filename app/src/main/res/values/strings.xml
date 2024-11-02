@@ -85,6 +85,7 @@
     <string name="joinroom_dialog_already_matched">이미 입장한 방이야!</string>
     <string name="joinroom_dialog_wrong_invitation_code">참여가 불가능한 방이야!\n혹시 초대 코드에 공백이 있는지 확인해줘!</string>
     <string name="joinroom_dialog_already_entered">참여가 불가능한 방이야!\n혹시 초대 코드에 공백이 있는지 확인해줘!</string>
+    <string name="joinroome_button">입장하기</string>
 
     <string name="waitingroom_cardview_title">참여자</string>
     <string name="waitingroom_copy_invitation_code">초대 코드 복사</string>
