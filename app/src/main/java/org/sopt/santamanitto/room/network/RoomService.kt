@@ -7,7 +7,6 @@ import org.sopt.santamanitto.room.create.network.CreateRoomRequestModel
 import org.sopt.santamanitto.room.create.network.ModifyRoomRequestModel
 import org.sopt.santamanitto.room.data.MyManittoModel
 import org.sopt.santamanitto.room.data.PersonalRoomModel
-import org.sopt.santamanitto.room.join.network.JoinRoomModel
 import org.sopt.santamanitto.room.join.network.JoinRoomRequestModel
 import org.sopt.santamanitto.room.join.network.JoinRoomResponseModel
 import org.sopt.santamanitto.room.manittoroom.network.ManittoRoomModel
@@ -42,7 +41,7 @@ interface RoomService {
     @POST("rooms/enter")
     fun joinRoom(
         @Body request: JoinRoomRequestModel
-    ): Call<Response<JoinRoomModel>>
+    ): Call<Response<JoinRoomResponseModel>>
 
     @GET("rooms/{roomId}")
     fun getManittoRoomData(
