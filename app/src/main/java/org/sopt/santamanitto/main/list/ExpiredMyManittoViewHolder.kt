@@ -3,14 +3,14 @@ package org.sopt.santamanitto.main.list
 import android.view.ViewGroup
 import org.sopt.santamanitto.R
 import org.sopt.santamanitto.databinding.ItemMymanittoExpiredBinding
-import org.sopt.santamanitto.room.data.TempMyManittoModel
+import org.sopt.santamanitto.room.data.MyManittoModel
 import org.sopt.santamanitto.view.recyclerview.BaseViewHolder
 
 class ExpiredMyManittoViewHolder(
     parent: ViewGroup,
     enterListener: ((roomId: String, isMatched: Boolean, isFinished: Boolean) -> Unit)?,
     removeListener: ((roomId: String) -> Unit)?
-) : BaseViewHolder<TempMyManittoModel, ItemMymanittoExpiredBinding>(
+) : BaseViewHolder<MyManittoModel, ItemMymanittoExpiredBinding>(
     R.layout.item_mymanitto_expired,
     parent
 ) {
@@ -33,7 +33,7 @@ class ExpiredMyManittoViewHolder(
         }
     }
 
-    override fun bind(data: TempMyManittoModel) {
+    override fun bind(data: MyManittoModel) {
         title.text = data.roomName
         roomId = data.roomId
     }

@@ -22,6 +22,7 @@ import org.sopt.santamanitto.main.list.MyManittoListAdapter
 import org.sopt.santamanitto.room.create.CreateRoomActivity
 import org.sopt.santamanitto.room.manittoroom.ManittoRoomActivity
 import org.sopt.santamanitto.view.dialog.exit.ExitDialogCreator
+import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -67,6 +68,8 @@ class MainFragment : Fragment() {
                     .collect { list ->
                         adapter.submitList(list)
 
+                        Timber.e("list: $list")
+
                         if (list.isEmpty()) {
                             binding.recyclerviewMainHistory.visibility = View.INVISIBLE
                             binding.constraintlayoutMainNomymanitto.visibility = View.VISIBLE
@@ -82,6 +85,8 @@ class MainFragment : Fragment() {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.isRefreshing.collect { isRefreshing ->
                     binding.progressbarMainJoinedRooms.isVisible = isRefreshing
+
+                    Timber.e("isRefreshing: $isRefreshing")
 
                     if (isRefreshing) adapter.clear()
                 }

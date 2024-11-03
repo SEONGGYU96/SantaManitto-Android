@@ -7,8 +7,8 @@ import androidx.annotation.RequiresApi
 import androidx.annotation.StringRes
 import org.sopt.santamanitto.R
 import org.sopt.santamanitto.databinding.ItemMymanittoBinding
-import org.sopt.santamanitto.room.data.TempMyManittoModel
-import org.sopt.santamanitto.room.data.TempPersonalRoomModel
+import org.sopt.santamanitto.room.data.MyManittoModel
+import org.sopt.santamanitto.room.data.PersonalRoomModel
 import org.sopt.santamanitto.room.data.getRoomState
 import org.sopt.santamanitto.room.network.RoomRequest
 import org.sopt.santamanitto.user.data.source.UserMetadataSource
@@ -23,7 +23,7 @@ class BasicMyManittoViewHolder(
     private val cachedRoomInfo: HashMap<String, MyManittoInfoModel>,
     private var listener: ((roomId: String, isMatched: Boolean, isFinished: Boolean) -> Unit)? = null,
     private var exitListener: ((roomId: String, roomName: String, isHost: Boolean) -> Unit)? = null,
-) : BaseViewHolder<TempMyManittoModel, ItemMymanittoBinding>(R.layout.item_mymanitto, parent) {
+) : BaseViewHolder<MyManittoModel, ItemMymanittoBinding>(R.layout.item_mymanitto, parent) {
     private val contentText = binding.textviewMymanittoManittoinfo
     private val stateText = binding.textviewMymanittoState
     private val missionText = binding.textviewMymanittoMission
@@ -32,7 +32,7 @@ class BasicMyManittoViewHolder(
     private val roomName = binding.textviewMymanittoTitle
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override fun bind(data: TempMyManittoModel) {
+    override fun bind(data: MyManittoModel) {
         roomName.text = data.roomName
 
         listener?.let { listener ->
@@ -84,12 +84,12 @@ class BasicMyManittoViewHolder(
 
     private fun requestAndCacheInfo(
         roomId: String,
-        data: TempMyManittoModel,
+        data: MyManittoModel,
     ) {
         roomRequest.getPersonalRoomInfo(
             roomId,
             object : RoomRequest.GetPersonalRoomInfoCallback {
-                override fun onLoadPersonalRoomInfo(personalRoom: TempPersonalRoomModel) {
+                override fun onLoadPersonalRoomInfo(personalRoom: PersonalRoomModel) {
                     val info = MyManittoInfoModel(
                         manittoName = personalRoom.manitto.username ?: "",
                         mission = personalRoom.mission.content,
@@ -126,7 +126,7 @@ class BasicMyManittoViewHolder(
         loadingBar.visibility = View.GONE
     }
 
-    private fun setRoomState(data: TempMyManittoModel) {
+    private fun setRoomState(data: MyManittoModel) {
         when (data.getRoomState()) {
             RoomState.IN_PROGRESS -> {
                 showExitButton(false)

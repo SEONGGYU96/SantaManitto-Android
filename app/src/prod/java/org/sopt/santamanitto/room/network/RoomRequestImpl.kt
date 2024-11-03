@@ -6,8 +6,9 @@ import org.sopt.santamanitto.network.start
 import org.sopt.santamanitto.room.create.network.CreateRoomModel
 import org.sopt.santamanitto.room.create.network.CreateRoomRequestModel
 import org.sopt.santamanitto.room.create.network.ModifyRoomRequestModel
-import org.sopt.santamanitto.room.data.TempMyManittoModel
-import org.sopt.santamanitto.room.data.TempPersonalRoomModel
+import org.sopt.santamanitto.room.data.MyManittoModel
+import org.sopt.santamanitto.room.data.PersonalRoomModel
+import org.sopt.santamanitto.room.join.network.JoinRoomModel
 import org.sopt.santamanitto.room.join.network.JoinRoomRequestModel
 import org.sopt.santamanitto.room.join.network.JoinRoomResponseModel
 import org.sopt.santamanitto.room.manittoroom.network.ManittoRoomModel
@@ -18,7 +19,7 @@ class RoomRequestImpl(
     private val roomService: RoomService,
 ) : RoomRequest {
 
-    override suspend fun getRooms(): List<TempMyManittoModel> {
+    override suspend fun getRooms(): List<MyManittoModel> {
         val response = roomService.getRooms()
 
         if (response.statusCode == 200) {
@@ -99,8 +100,8 @@ class RoomRequestImpl(
         callback: RoomRequest.GetPersonalRoomInfoCallback
     ) {
         roomService.getRoomPersonalInfo(roomId)
-            .start(object : RequestCallback<TempPersonalRoomModel> {
-                override fun onSuccess(data: TempPersonalRoomModel) {
+            .start(object : RequestCallback<PersonalRoomModel> {
+                override fun onSuccess(data: PersonalRoomModel) {
                     callback.onLoadPersonalRoomInfo(data)
                 }
 

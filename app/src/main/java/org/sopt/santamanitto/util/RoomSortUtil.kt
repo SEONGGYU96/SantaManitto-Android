@@ -1,12 +1,12 @@
 package org.sopt.santamanitto.util
 
 import org.sopt.santamanitto.main.list.RoomState
-import org.sopt.santamanitto.room.data.TempMyManittoModel
+import org.sopt.santamanitto.room.data.MyManittoModel
 import org.sopt.santamanitto.room.data.getRoomState
 
 object RoomSortUtil {
-    fun getSortedRooms(rooms: List<TempMyManittoModel>): List<TempMyManittoModel> {
-        return rooms.sortedWith(compareBy<TempMyManittoModel> { room ->
+    fun getSortedRooms(rooms: List<MyManittoModel>): List<MyManittoModel> {
+        return rooms.sortedWith(compareBy<MyManittoModel> { room ->
             // 1차 정렬: 방 상태 우선순위
             when (room.getRoomState()) {
                 RoomState.IN_PROGRESS -> 0
