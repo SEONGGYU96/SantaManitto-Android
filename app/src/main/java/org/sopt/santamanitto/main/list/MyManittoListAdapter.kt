@@ -4,7 +4,7 @@ import android.os.Build
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.ListAdapter
-import org.sopt.santamanitto.room.data.TempMyManittoModel
+import org.sopt.santamanitto.room.data.MyManittoModel
 import org.sopt.santamanitto.room.data.getRoomState
 import org.sopt.santamanitto.room.network.RoomRequest
 import org.sopt.santamanitto.user.data.source.UserMetadataSource
@@ -14,7 +14,7 @@ import org.sopt.santamanitto.view.recyclerview.BaseViewHolder
 class MyManittoListAdapter(
     private val userMetadataSource: UserMetadataSource,
     private val roomRequest: RoomRequest
-) : ListAdapter<TempMyManittoModel, BaseViewHolder<TempMyManittoModel, *>>(DiffUtil) {
+) : ListAdapter<MyManittoModel, BaseViewHolder<MyManittoModel, *>>(DiffUtil) {
 
     private var enterListener: ((roomId: String, isMatched: Boolean, isFinished: Boolean) -> Unit)? =
         null
@@ -26,7 +26,7 @@ class MyManittoListAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): BaseViewHolder<TempMyManittoModel, *> {
+    ): BaseViewHolder<MyManittoModel, *> {
         return when (viewType) {
             VIEW_TYPE_REMOVED -> RemovedMyManittoViewHolder(parent, removeListener)
             VIEW_TYPE_EXPIRED -> ExpiredMyManittoViewHolder(parent, enterListener, removeListener)
@@ -41,7 +41,7 @@ class MyManittoListAdapter(
         }
     }
 
-    override fun onBindViewHolder(holder: BaseViewHolder<TempMyManittoModel, *>, position: Int) {
+    override fun onBindViewHolder(holder: BaseViewHolder<MyManittoModel, *>, position: Int) {
         when (holder) {
             is BasicMyManittoViewHolder -> {
                 holder.clear()
@@ -98,7 +98,7 @@ class MyManittoListAdapter(
         private const val VIEW_TYPE_REMOVED = 1
         private const val VIEW_TYPE_EXPIRED = 2
 
-        private val DiffUtil = ItemDiffCallback<TempMyManittoModel>(
+        private val DiffUtil = ItemDiffCallback<MyManittoModel>(
             onContentsTheSame = { oldItem, newItem -> oldItem.roomId == newItem.roomId },
             onItemsTheSame = { oldItem, newItem -> oldItem == newItem }
         )

@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import org.sopt.santamanitto.NetworkViewModel
-import org.sopt.santamanitto.room.data.TempPersonalRoomModel
+import org.sopt.santamanitto.room.data.PersonalRoomModel
 import org.sopt.santamanitto.room.manittoroom.network.ManittoRoomMember
 import org.sopt.santamanitto.room.manittoroom.network.ManittoRoomModel
 import org.sopt.santamanitto.room.network.RoomRequest
@@ -135,7 +135,7 @@ class ManittoRoomViewModel @Inject constructor(
     fun getPersonalRelationInfo() {
         startLoading()
         roomRequest.getPersonalRoomInfo(roomId, object : RoomRequest.GetPersonalRoomInfoCallback {
-            override fun onLoadPersonalRoomInfo(personalRoom: TempPersonalRoomModel) {
+            override fun onLoadPersonalRoomInfo(personalRoom: PersonalRoomModel) {
                 _myManittoName.value = personalRoom.manitto.username
                 _myMission.value = personalRoom.mission.content
                 stopLoading()
