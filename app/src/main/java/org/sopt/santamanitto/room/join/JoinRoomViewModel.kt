@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import dagger.hilt.android.lifecycle.HiltViewModel
 import org.sopt.santamanitto.NetworkViewModel
-import org.sopt.santamanitto.room.join.network.JoinRoomModel
 import org.sopt.santamanitto.room.join.network.JoinRoomRequestModel
+import org.sopt.santamanitto.room.join.network.JoinRoomResponseModel
 import org.sopt.santamanitto.room.network.RoomRequest
 import org.sopt.santamanitto.room.network.RoomRequest.JoinRoomError
 import javax.inject.Inject
@@ -34,11 +34,11 @@ class JoinRoomViewModel @Inject constructor(
     val isAlreadyEnteredRoom: LiveData<Boolean>
         get() = _isAlreadyEnteredRoom
 
-    fun joinRoom(callback: (JoinRoomModel) -> Unit) {
+    fun joinRoom(callback: (JoinRoomResponseModel) -> Unit) {
         roomRequest.joinRoom(JoinRoomRequestModel(invitationCode.value!!),
             object : RoomRequest.JoinRoomCallback {
 
-                override fun onSuccessJoinRoom(joinedRoom: JoinRoomModel) {
+                override fun onSuccessJoinRoom(joinedRoom: JoinRoomResponseModel) {
                     callback(joinedRoom)
                 }
 

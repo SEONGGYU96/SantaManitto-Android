@@ -8,8 +8,8 @@ import org.sopt.santamanitto.room.create.network.CreateRoomRequestModel
 import org.sopt.santamanitto.room.create.network.ModifyRoomRequestModel
 import org.sopt.santamanitto.room.data.TempMyManittoModel
 import org.sopt.santamanitto.room.data.TempPersonalRoomModel
-import org.sopt.santamanitto.room.join.network.JoinRoomModel
 import org.sopt.santamanitto.room.join.network.JoinRoomRequestModel
+import org.sopt.santamanitto.room.join.network.JoinRoomResponseModel
 import org.sopt.santamanitto.room.manittoroom.network.ManittoRoomModel
 import retrofit2.Call
 import retrofit2.Callback
@@ -52,13 +52,13 @@ class RoomRequestImpl(
     }
 
     override fun joinRoom(request: JoinRoomRequestModel, callback: RoomRequest.JoinRoomCallback) {
-        roomService.joinRoom(request).enqueue(object : Callback<Response<JoinRoomModel>> {
+        roomService.joinRoom(request).enqueue(object : Callback<Response<JoinRoomResponseModel>> {
             override fun onResponse(
-                call: Call<Response<JoinRoomModel>>,
-                response: retrofit2.Response<Response<JoinRoomModel>>
+                call: Call<Response<JoinRoomResponseModel>>,
+                response: retrofit2.Response<Response<JoinRoomResponseModel>>
             ) {
-                if (response.isSuccessful) {
-                    callback.onSuccessJoinRoom(response.body()!!.data)
+                if (response.isSuccessful && response.body()?.statusCode == 201) {
+                    callback.onSuccessJoinRoom(response.body()?.data!!)
                 } else {
                     val error = when (response.code()) {
                         403 -> RoomRequest.JoinRoomError.AlreadyMatched
@@ -72,7 +72,7 @@ class RoomRequestImpl(
                 }
             }
 
-            override fun onFailure(call: Call<Response<JoinRoomModel>>, t: Throwable) {
+            override fun onFailure(call: Call<Response<JoinRoomResponseModel>>, t: Throwable) {
                 callback.onFailed(RoomRequest.JoinRoomError.Els)
             }
         })

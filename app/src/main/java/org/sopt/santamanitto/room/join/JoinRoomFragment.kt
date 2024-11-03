@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import org.sopt.santamanitto.R
 import org.sopt.santamanitto.databinding.FragmentJoinRoomBinding
-import org.sopt.santamanitto.room.join.network.JoinRoomModel
+import org.sopt.santamanitto.room.join.network.JoinRoomResponseModel
 import org.sopt.santamanitto.room.manittoroom.ManittoRoomActivity
 import org.sopt.santamanitto.util.FragmentUtil.hideKeyboardOnOutsideEditText
 import org.sopt.santamanitto.util.base.BaseFragment
@@ -75,10 +75,10 @@ class JoinRoomFragment : BaseFragment<FragmentJoinRoomBinding>(R.layout.fragment
         }
     }
 
-    private fun startManittoRoomActivity(joinRoomResponse: JoinRoomModel) {
+    private fun startManittoRoomActivity(joinRoomResponse: JoinRoomResponseModel) {
         requireActivity().run {
             startActivity(Intent(this, ManittoRoomActivity::class.java).apply {
-                putExtra(ManittoRoomActivity.EXTRA_ROOM_ID, joinRoomResponse.room.id)
+                putExtra(ManittoRoomActivity.EXTRA_ROOM_ID, joinRoomResponse.roomId)
             })
         }
         findNavController().navigateUp()
