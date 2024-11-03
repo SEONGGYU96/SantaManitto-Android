@@ -22,7 +22,6 @@ import org.sopt.santamanitto.main.list.MyManittoListAdapter
 import org.sopt.santamanitto.room.create.CreateRoomActivity
 import org.sopt.santamanitto.room.manittoroom.ManittoRoomActivity
 import org.sopt.santamanitto.view.dialog.exit.ExitDialogCreator
-import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -67,8 +66,6 @@ class MainFragment : Fragment() {
                 viewModel.myManittoModelList
                     .collect { list ->
                         adapter.submitList(list)
-
-                        Timber.e("list: $list")
 
                         if (list.isEmpty()) {
                             binding.recyclerviewMainHistory.visibility = View.INVISIBLE
