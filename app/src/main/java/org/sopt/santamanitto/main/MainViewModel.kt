@@ -31,13 +31,11 @@ class MainViewModel @Inject constructor(
             _isLoading.value = true
             try {
                 val rooms = roomRequest.getRooms()
-                Timber.e("rooms: $rooms")
                 _myManittoModelList.emit(RoomSortUtil.getSortedRooms(rooms))
             } catch (e: Exception) {
                 Timber.e(e)
                 _networkErrorOccur.value = true
             } finally {
-                Timber.e("finally")
                 _isLoading.value = false
                 _isRefreshing.value = false
             }
@@ -68,8 +66,6 @@ class MainViewModel @Inject constructor(
     }
 
     fun refresh() {
-        Timber.e("refresh1")
         fetchMyManittoList()
-        Timber.e("refresh2")
     }
 }
