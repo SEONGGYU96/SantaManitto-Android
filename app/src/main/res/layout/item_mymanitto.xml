@@ -44,11 +44,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:letterSpacing="-0.04"
-                    android:lineHeight="14dp"
                     android:text="@string/joinedroom_santa_info_before_matching"
                     android:textColor="@color/black"
                     android:textFontWeight="500"
-                    android:lineSpacingMultiplier="1.5"
+                    android:lineSpacingMultiplier="1.1"
                     android:textSize="14sp"
                     tool:text="동민동민동민동민동민의 산타 " />
 
