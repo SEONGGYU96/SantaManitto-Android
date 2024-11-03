@@ -85,10 +85,6 @@ class MainFragment : Fragment() {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.isRefreshing.collect { isRefreshing ->
                     binding.progressbarMainJoinedRooms.isVisible = isRefreshing
-
-                    Timber.e("isRefreshing: $isRefreshing")
-
-                    if (isRefreshing) adapter.clear()
                 }
             }
         }
