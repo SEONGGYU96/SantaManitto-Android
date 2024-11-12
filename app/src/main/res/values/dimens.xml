@@ -106,7 +106,7 @@
     <dimen name="margin_mymanitto_state_top">7dp</dimen>
     <dimen name="margin_mymanitto_mission_top">25dp</dimen>
     <dimen name="size_main_mymanitto">20sp</dimen>
-    <dimen name="margin_mymanitto_item_decoration">16dp</dimen>
+    <dimen name="margin_mymanitto_item_decoration">15dp</dimen>
     <dimen name="padding_mymanitto_daydiff_textview_horizontal">16dp</dimen>
     <dimen name="padding_mymanitto_daydiff_textview_vertical">6dp</dimen>
 

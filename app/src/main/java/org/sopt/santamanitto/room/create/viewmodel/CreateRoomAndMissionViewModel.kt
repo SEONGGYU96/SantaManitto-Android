@@ -36,6 +36,8 @@ class CreateRoomAndMissionViewModel @Inject constructor(
 
     var nameIsNullOrEmpty = roomName.map { it.isNullOrBlank() }
 
+    var unsavedMission = MutableLiveData<String>("")
+
     fun getRoomData(roomId: String) {
         if (roomId.isBlank()) {
             return

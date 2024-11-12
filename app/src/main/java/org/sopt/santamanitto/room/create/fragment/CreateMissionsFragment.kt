@@ -3,6 +3,7 @@ package org.sopt.santamanitto.room.create.fragment
 import android.content.res.Resources
 import android.os.Bundle
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import org.sopt.santamanitto.R
@@ -22,7 +23,13 @@ class CreateMissionsFragment :
     CreateMissionAdaptor.CreateMissionCallback {
     private val viewModel: CreateRoomAndMissionViewModel by activityViewModels()
 
-    private val createMissionAdaptor = CreateMissionAdaptor(this)
+    private val createMissionAdaptor = CreateMissionAdaptor(this).apply {
+        setTextChangeListener(object : CreateMissionAdaptor.OnMissionTextChangeListener {
+            override fun onTextChanged(newText: String?) {
+                viewModel.unsavedMission.value = newText
+            }
+        })
+    }
 
     override fun onViewCreated(
         view: View,
@@ -36,11 +43,16 @@ class CreateMissionsFragment :
 
         setOnClickListener()
 
+        initOnBackPressedListener()
+
+        observeUnsavedMission()
+
         hideKeyboardOnOutsideEditText()
     }
 
     override fun onMissionInserted(mission: String) {
         viewModel.addMission(mission)
+        viewModel.unsavedMission.value = ""
         binding.santabottombuttonCreatemissionDone.isEnabled = true
     }
 
@@ -59,6 +71,7 @@ class CreateMissionsFragment :
                 }
             }
             santabottombuttonCreatemissionDone.setOnClickListener {
+                saveUnsavedMission()
                 if (viewModel.hasMissions()) {
                     navigateConfirmFragment()
                 } else {
@@ -66,8 +79,29 @@ class CreateMissionsFragment :
                 }
             }
             santabackgroundCreatemission.setOnBackKeyClickListener {
+                saveUnsavedMission()
                 findNavController().navigateUp()
             }
+        }
+    }
+
+    private fun initOnBackPressedListener() {
+        requireActivity().onBackPressedDispatcher.addCallback(
+            requireActivity(),
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    saveUnsavedMission()
+                    isEnabled = false
+                    remove()
+                    requireActivity().onBackPressedDispatcher.onBackPressed()
+                }
+            })
+    }
+
+    private fun saveUnsavedMission() {
+        if (!viewModel.unsavedMission.value.isNullOrBlank()) {
+            viewModel.addMission(viewModel.unsavedMission.value!!)
+            viewModel.unsavedMission.value = ""
         }
     }
 
@@ -85,6 +119,13 @@ class CreateMissionsFragment :
                 viewModel.heightOfRecyclerView =
                     height - (100 * Resources.getSystem().displayMetrics.density).toInt()
             }
+        }
+    }
+
+    private fun observeUnsavedMission() {
+        viewModel.unsavedMission.observe(viewLifecycleOwner) {
+            binding.santabottombuttonCreatemissionDone.isEnabled =
+                !it.isNullOrBlank() || viewModel.hasMissions()
         }
     }
 
