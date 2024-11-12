@@ -152,7 +152,7 @@
     <dimen name="padding_waitingroom_recyclerview_start">28dp</dimen>
     <dimen name="margin_waitingroom_notice_bottom">30dp</dimen>
     <dimen name="size_waitingroom_notice">14sp</dimen>
-    <dimen name="margin_waitingroom_recyclerview_items">16dp</dimen>
+    <dimen name="margin_waitingroom_recyclerview_items">15dp</dimen>
 
     <dimen name="height_memberitem_imageview">30dp</dimen>
     <dimen name="margin_memberitem_image_end">12dp</dimen>
