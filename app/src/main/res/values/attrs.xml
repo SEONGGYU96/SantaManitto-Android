@@ -22,6 +22,7 @@
     <declare-styleable name="SantaCheckBox">
         <attr name="text" format="string" />
         <attr name="isChecked" format="boolean" />
+        <attr name="hasArrow" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="SantaSmallButton">
