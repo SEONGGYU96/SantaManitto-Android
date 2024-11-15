@@ -57,6 +57,7 @@ class CreateMissionsFragment :
     }
 
     override fun onMissionDeleted(mission: String) {
+        saveUnsavedMission()
         viewModel.deleteMission(mission)
         if (!viewModel.hasMissions()) binding.santabottombuttonCreatemissionDone.isEnabled = false
     }
