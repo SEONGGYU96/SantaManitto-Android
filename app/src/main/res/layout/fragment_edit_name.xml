@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/padding_entire"
             android:layout_marginTop="@dimen/margin_signin_title_top"
-            android:text="@string/entername_title"
+            android:text="@string/editname_title"
             android:textFontWeight="700"
             android:textSize="@dimen/size_signin_title"
             app:layout_constraintStart_toStartOf="parent"
