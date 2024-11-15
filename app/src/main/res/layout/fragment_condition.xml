@@ -21,14 +21,14 @@
 
         <org.sopt.santamanitto.view.SantaBackground
             android:id="@+id/santabackground_condition"
+            style="@style/SantaBackground.BigTitle"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            style="@style/SantaBackground.BigTitle"
-            app:middleTitle="@string/condition_background_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.396"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:middleTitle="@string/condition_background_text" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textview_condition_title"
@@ -87,6 +87,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/margin_condition_divider_top"
+                    app:hasArrow="false"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -136,8 +137,8 @@
             android:layout_marginHorizontal="@dimen/padding_entire"
             android:layout_marginBottom="@dimen/margin_signin_button_bottom"
             android:enabled="@{viewModel.isReady()}"
-            android:text="@string/button_next"
             android:onClick="@{() -> viewModel.signIn(userName)}"
+            android:text="@string/button_next"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

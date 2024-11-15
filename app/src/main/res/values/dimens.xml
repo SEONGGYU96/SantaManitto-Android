@@ -30,7 +30,7 @@
     <dimen name="size_santaimageroundbutton_description">14sp</dimen>
     <dimen name="width_santaimageroundbutton_max">145dp</dimen>
 
-    <dimen name="padding_santacheckbox_horizontal">16dp</dimen>
+    <dimen name="padding_santacheckbox_horizontal">12dp</dimen>
     <dimen name="margin_santacheckbox_textpadding_start">15dp</dimen>
     <dimen name="size_santacheckbox_buttontext">16sp</dimen>
     <dimen name="width_santacheckbox_checkbox">25dp</dimen>
