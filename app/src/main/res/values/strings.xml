@@ -118,7 +118,7 @@
     <string name="santanameinput_alert">・이름은 최대 %d자까지 설정 가능해</string>
 
     <string name="editname_background">산타 마니또가 나를\n뭐라고 부르는 게 좋을까?</string>
-    <string name="editname_finish">이름을 성공적으로 변경했어!</string>
+    <string name="editname_finish">이제 바꾼 이름으로 마니또 게임을 할 수 있어!</string>
     <string name="editname_button">이름 수정 완료</string>
 
     <string name="exit_dialog_host">방장이 나가면 재입장할 수 없고\n친구들도 더 이상 방에 접속할 수 없어!</string>
