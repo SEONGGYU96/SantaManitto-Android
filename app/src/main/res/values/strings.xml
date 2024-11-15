@@ -15,7 +15,7 @@
 
     <string name="santaperiodpicker_period">%d일 후</string>
     <string name="entername_background_welcome">반가워, 이제부터\n산타 마니또에서 재미있게 놀자!</string>
-    <string name="entername_title">이름 설정</string>
+    <string name="entername_title">이름 수정</string>
     <string name="entername_title_name">내 이름 (최대 10자)</string>
     <string name="entername_edittext_hint">마니또가 부를 비밀스러운 이름을 지어줘!</string>
     <string name="entername_button_text">이름 짓기 완료</string>
