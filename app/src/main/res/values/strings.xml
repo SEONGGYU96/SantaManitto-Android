@@ -20,11 +20,11 @@
     <string name="entername_edittext_hint">마니또가 알 수 있도록 지어줘!</string>
     <string name="entername_button_text">이름 짓기 완료</string>
 
-    <string name="condition_title">이용약관 동의</string>
+    <string name="condition_title">약관 동의</string>
     <string name="condition_all_agree">전체 동의</string>
     <string name="condition_1">(필수) 이용 약관 동의</string>
     <string name="condition_2">(필수) 개인정보 수집 및 이용 동의</string>
-    <string name="condition_background_text">필수이용약관에 동의하면 친구들과\n산타 마니또를 할 수 있어!</string>
+    <string name="condition_background_text">약관에 동의하면 친구들과\n산타 마니또를 할 수 있어!</string>
 
     <string name="main_make_room">방 만들기</string>
     <string name="main_join_room">방 입장하기</string>
