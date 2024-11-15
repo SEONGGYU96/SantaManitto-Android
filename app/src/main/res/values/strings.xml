@@ -97,6 +97,7 @@
     <string name="manittoroom_description_today_prefix">바로 오늘, </string>
     <string name="manittoroom_description_not_today_prefix">오늘부터 %d일 후인,</string>
     <string name="manittoroom_description_suffix" formatted="false">%d월 %d일\n%s %02d:%02d까지 진행되는 마니또</string>
+    <string name="manittoroom_description_overtime" formatted="false">~%d.%d.%d\n앗! 아쉽게도 기한이 지나버렸어!</string>
 
     <string name="matching_text">산타 마니또 매칭중\n잠시만 기다려줘 :)</string>
 

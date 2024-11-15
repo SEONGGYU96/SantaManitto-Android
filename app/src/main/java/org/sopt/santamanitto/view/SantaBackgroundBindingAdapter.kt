@@ -16,25 +16,37 @@ fun setExpirationDescription(view: SantaBackground, expiration: String?) {
         )
     val dayDiff = TimeUtil.getDayDiffFromNow(expiration)
     val description = StringBuilder()
-    if (dayDiff == 0) {
-        description.append(view.context.getString(R.string.manittoroom_description_today_prefix))
+    if (dayDiff >= 0) {
+        if (dayDiff == 0) {
+            description.append(view.context.getString(R.string.manittoroom_description_today_prefix))
+        } else {
+            description.append(
+                String.format(
+                    view.context.getString(R.string.manittoroom_description_not_today_prefix),
+                    dayDiff
+                )
+            )
+        }
+        description.append(" ").append(
+            String.format(
+                view.context.getString(R.string.manittoroom_description_suffix),
+                calendar.get(Calendar.MONTH) + 1,
+                calendar.get(Calendar.DAY_OF_MONTH),
+                amPm,
+                calendar.get(Calendar.HOUR),
+                calendar.get(Calendar.MINUTE)
+            )
+        )
     } else {
         description.append(
             String.format(
-                view.context.getString(R.string.manittoroom_description_not_today_prefix), dayDiff
+                view.context.getString(R.string.manittoroom_description_overtime),
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH) + 1,
+                calendar.get(Calendar.DAY_OF_MONTH),
             )
         )
     }
-    description.append(" ").append(
-        String.format(
-            view.context.getString(R.string.manittoroom_description_suffix),
-            calendar.get(Calendar.MONTH) + 1,
-            calendar.get(Calendar.DAY_OF_MONTH),
-            amPm,
-            calendar.get(Calendar.HOUR),
-            calendar.get(Calendar.MINUTE)
-        )
-    )
 
     view.description = description.toString()
 }
