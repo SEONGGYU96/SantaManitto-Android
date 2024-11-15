@@ -97,6 +97,7 @@
     <string name="manittoroom_description_today_prefix">바로 오늘, </string>
     <string name="manittoroom_description_not_today_prefix">오늘부터 %d일 후인,</string>
     <string name="manittoroom_description_suffix" formatted="false">%d월 %d일\n%s %02d:%02d까지 진행되는 마니또</string>
+    <string name="manittoroom_description_overtime" formatted="false">~%d.%d.%d\n앗! 아쉽게도 기한이 지나버렸어!</string>
 
     <string name="matching_text">산타 마니또 매칭중\n잠시만 기다려줘 :)</string>
 
@@ -104,7 +105,7 @@
     <string name="matched_mission_title" formatted="false">%s 산타가 수행할 미션</string>
     <string name="matched_manitto_title" formatted="false">%s 산타의 마니또</string>
     <string name="matched_mission_manitto_title">마니또가 나에게 수행한 미션</string>
-    <string name="matched_no_mission">미션이 없습니다</string>
+    <string name="matched_no_mission">이번에는 미션 없이 마니또만 매칭됐어!</string>
     <string name="matched_bottom_button_delete">나의 산타 마니또에서 삭제하기</string>
 
     <string name="finish_bottom_button">전체 결과 보기</string>

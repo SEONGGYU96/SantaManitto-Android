@@ -9,8 +9,12 @@ import org.sopt.santamanitto.databinding.ItemCreateMissionBinding
 open class CreateMissionAdaptor(
     private val createMissionCallback: CreateMissionCallback,
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
     protected val missions = mutableListOf<String>()
     private var currentMissionText: String? = null
+
+
+    private var textChangeListener: OnMissionTextChangeListener? = null
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -21,6 +25,7 @@ open class CreateMissionAdaptor(
             val binding = ItemCreateMissionBinding.inflate(inflater, parent, false)
             CreateMissionViewHolder(createMissionCallback, binding) { text ->
                 currentMissionText = text
+                textChangeListener?.onTextChanged(text)
                 (parent as? RecyclerView)?.post {
                     notifyItemChanged(missions.size + 1, PAYLOAD_TEXT_CHANGED)
                 }
@@ -58,12 +63,21 @@ open class CreateMissionAdaptor(
 
     override fun getItemCount(): Int = missions.size + 2
 
-    override fun getItemViewType(position: Int): Int = if (position == missions.size + 1) VIEW_TYPE_FOOTER else VIEW_TYPE_ITEM
+    override fun getItemViewType(position: Int): Int =
+        if (position == missions.size + 1) VIEW_TYPE_FOOTER else VIEW_TYPE_ITEM
 
     fun setList(data: List<String>) {
         missions.clear()
         missions.addAll(data)
         notifyDataSetChanged()
+    }
+
+    interface OnMissionTextChangeListener {
+        fun onTextChanged(newText: String?)
+    }
+
+    fun setTextChangeListener(listener: OnMissionTextChangeListener) {
+        this.textChangeListener = listener
     }
 
     interface CreateMissionCallback {

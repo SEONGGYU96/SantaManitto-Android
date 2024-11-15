@@ -48,7 +48,7 @@
             android:layout_height="0dp"
             android:layout_marginHorizontal="@dimen/padding_entire"
             android:layout_marginTop="@dimen/margin_cardview_to_guidline_top"
-            android:layout_marginBottom="@dimen/margin_waitingroom_cardview_bottom"
+            android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toTopOf="@id/textview_waitingroom_notice"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -167,23 +167,23 @@
                 android:id="@+id/santabottombutton_waitingroom_modify"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginEnd="12dp"
+                android:text="@string/waitingroom_modify"
+                android:visibility="@{vm.isAdmin() ? View.VISIBLE : View.GONE}"
                 app:isGrayButton="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/santabottombutton_waitingroom_match"
-                android:text="@string/waitingroom_modify"
-                android:visibility="@{vm.isAdmin() ? View.VISIBLE : View.GONE}" />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <org.sopt.santamanitto.view.SantaBottomButton
                 android:id="@+id/santabottombutton_waitingroom_match"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/santabottombutton_waitingroom_modify"
                 android:enabled="@{vm.canStart}"
-                android:text="@string/waitingroom_bottombutton" />
+                android:text="@string/waitingroom_bottombutton"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/santabottombutton_waitingroom_modify" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

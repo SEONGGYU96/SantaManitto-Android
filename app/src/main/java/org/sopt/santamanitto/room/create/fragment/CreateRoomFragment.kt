@@ -155,10 +155,14 @@ class CreateRoomFragment :
             .from(requireContext())
             .inflate(R.layout.dialog_create_room_time_picker, binding.root as ViewGroup, false)
             .apply {
-                findViewById<SantaNumberPicker>(R.id.santanumberpicker_pickerdialog_hour)
-                    .setInitialPosition(viewModel.expirationLiveData.hour - 1)
-                findViewById<SantaNumberPicker>(R.id.santanumberpicker_pickerdialog_minute)
-                    .setInitialPosition(viewModel.expirationLiveData.minute)
+                findViewById<SantaNumberPicker>(R.id.santanumberpicker_pickerdialog_hour).apply {
+                    setInitialPosition(viewModel.expirationLiveData.hour - 1)
+                    setRange(1, 12)
+                }
+                findViewById<SantaNumberPicker>(R.id.santanumberpicker_pickerdialog_minute).apply {
+                    setInitialPosition(viewModel.expirationLiveData.minute)
+                    setRange(0, 59)
+                }
             }
 
     private fun showNoMissionDialog() {

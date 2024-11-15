@@ -14,6 +14,8 @@ fun <T> RecyclerView.replaceAll(list: List<T>?) {
     } ?: (this.adapter as? BaseAdapter<T>)?.run {
         if (list != null) {
             setList(list)
+            // 모든 마진이 15dp로 설정되어있어서 일단 하드코딩, 추후 바인딩 어댑터 해제시 참고
+            this@replaceAll.setItemMargin(15f)
             this@replaceAll.visibility = if (list.isEmpty()) {
                 View.INVISIBLE
             } else {
@@ -29,5 +31,6 @@ fun <T> RecyclerView.replaceAll(list: List<T>?) {
 @BindingAdapter("setItemMargin")
 fun RecyclerView.setItemMargin(dimen: Float) {
     val orientation = (layoutManager as LinearLayoutManager?)?.orientation ?: return
+    removeItemDecoration(MarginDecoration(dimen, orientation))
     addItemDecoration(MarginDecoration(dimen, orientation))
 }
