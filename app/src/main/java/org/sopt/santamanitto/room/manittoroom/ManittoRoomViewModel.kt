@@ -84,15 +84,16 @@ class ManittoRoomViewModel @Inject constructor(
         roomRequest.getManittoRoomData(roomId, object : RoomRequest.GetManittoRoomCallback {
             override fun onLoadManittoRoomData(manittoRoom: ManittoRoomModel) {
                 manittoRoom.run {
+                    val kstExpirationDate = TimeUtil.convertUtcToKst(expirationDate)
                     _roomName.value = roomName
-                    _expiration.value = expirationDate
-                    _isExpired.value = TimeUtil.getDayDiffFromNow(expirationDate) < 0
+                    _expiration.value = kstExpirationDate
+                    _isExpired.value = TimeUtil.getDayDiffFromNow(kstExpirationDate) < 0
                     _members.value = members
                     _invitationCode = invitationCode
                     _isAdmin.value = userMetadataSource.getUserId() == creator.userId
                     _canStart.value = _isAdmin.value!! && members.size > 1
                     this@ManittoRoomViewModel.isMatched = isMatched
-                    _period.value = getPeriod(createdAt, expirationDate)
+                    _period.value = TimeUtil.getDayDiff(kstExpirationDate, createdAt)
                     if (!manittoRoom.matchingDate.isNullOrBlank()) {
                         _missionToMe.value =
                             findMissionContentByUserId(userMetadataSource.getUserId(), this)
@@ -147,8 +148,8 @@ class ManittoRoomViewModel @Inject constructor(
         })
     }
 
-    fun removeHistory(callback: () -> Unit) {
-        roomRequest.removeHistory(roomId) { isRemoved ->
+    fun exitRoom(callback: () -> Unit) {
+        roomRequest.exitRoom(roomId) { isRemoved ->
             if (isRemoved) {
                 callback.invoke()
             } else {
@@ -156,7 +157,4 @@ class ManittoRoomViewModel @Inject constructor(
             }
         }
     }
-
-    private fun getPeriod(createdAt: String, expiration: String): Int =
-        TimeUtil.getDayDiff(expiration, createdAt)
 }

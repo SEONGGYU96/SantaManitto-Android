@@ -76,10 +76,10 @@ class ExpirationLiveData : LiveData<ExpirationLiveData>() {
     }
 
     fun init(expiration: String) {
-        expirationDate = TimeUtil.convertUtcToGregorianCalendar(expiration)
+        expirationDate = TimeUtil.convertKstToGregorianCalendar(expiration)
         _period = TimeUtil.getDayDiffFromNow(expiration)
         postValue(this)
     }
 
-    override fun toString(): String = TimeUtil.convertGregorianCalendarToLocal(expirationDate)
+    override fun toString(): String = TimeUtil.convertGregorianCalendarToUtc(expirationDate)
 }
