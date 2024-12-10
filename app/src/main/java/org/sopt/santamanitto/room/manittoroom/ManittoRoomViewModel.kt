@@ -87,7 +87,7 @@ class ManittoRoomViewModel @Inject constructor(
                     val kstExpirationDate = TimeUtil.convertUtcToKst(expirationDate)
                     _roomName.value = roomName
                     _expiration.value = kstExpirationDate
-                    _isExpired.value = TimeUtil.isExpired(kstExpirationDate)
+                    _isExpired.value = TimeUtil.getDayDiffFromNow(kstExpirationDate) < 0
                     _members.value = members
                     _invitationCode = invitationCode
                     _isAdmin.value = userMetadataSource.getUserId() == creator.userId

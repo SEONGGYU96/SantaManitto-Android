@@ -22,25 +22,25 @@ object RoomSortUtil {
                 RoomState.IN_PROGRESS -> {
                     // 결과 공개 예정일 기준 오름차순
                     room.expirationDate?.let {
-                        TimeUtil.convertUtcToCalendar(it).timeInMillis
+                        TimeUtil.convertKstToCalendar(it).timeInMillis
                     } ?: 0
                 }
 
                 RoomState.WAITING -> {
                     // 방 생성 일자 내림차순
-                    -(TimeUtil.convertUtcToCalendar(room.createdAt).timeInMillis)
+                    -(TimeUtil.convertKstToCalendar(room.createdAt).timeInMillis)
                 }
 
                 RoomState.FINISHED -> {
                     // 방 종료 일자 내림차순
                     room.expirationDate?.let {
-                        -(TimeUtil.convertUtcToCalendar(it).timeInMillis)
+                        -(TimeUtil.convertKstToCalendar(it).timeInMillis)
                     } ?: 0
                 }
 
                 RoomState.DELETED -> {
                     // 방 생성 일자 내림차순
-                    -(TimeUtil.convertUtcToCalendar(room.createdAt).timeInMillis)
+                    -(TimeUtil.convertKstToCalendar(room.createdAt).timeInMillis)
                 }
 
                 else -> 0

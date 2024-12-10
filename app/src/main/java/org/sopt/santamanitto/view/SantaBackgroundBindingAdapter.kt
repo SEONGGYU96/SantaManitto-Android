@@ -3,13 +3,13 @@ package org.sopt.santamanitto.view
 import androidx.databinding.BindingAdapter
 import org.sopt.santamanitto.R
 import org.sopt.santamanitto.util.TimeUtil
-import org.sopt.santamanitto.util.TimeUtil.convertUtcToCalendar
+import org.sopt.santamanitto.util.TimeUtil.convertKstToCalendar
 import java.util.Calendar
 
 @BindingAdapter("setExpirationDescription")
 fun setExpirationDescription(view: SantaBackground, expiration: String?) {
     if (expiration == null) return
-    val calendar = convertUtcToCalendar(expiration)
+    val calendar = convertKstToCalendar(expiration)
     val amPm =
         if (calendar.get(Calendar.AM_PM) == Calendar.AM) view.context.getString(R.string.am) else view.context.getString(
             R.string.pm
