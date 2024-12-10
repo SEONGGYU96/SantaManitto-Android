@@ -6,7 +6,6 @@ import java.util.Date
 import java.util.GregorianCalendar
 import java.util.Locale
 import java.util.TimeZone
-import kotlin.math.roundToInt
 
 object TimeUtil {
 
@@ -96,30 +95,4 @@ object TimeUtil {
                 ?: throw IllegalArgumentException(WRONG_FORMAT)
         }
     }
-
-    /*** TODO : 일단 안쓰는 것들 @@@@@@@@@@@@@@@@@@@@@@@@@@@ ***/
-
-    private fun getDayDiff(later: Long, early: Long): Int {
-        val gap: Long = later - early
-        val dayDiff: Float = (gap / (24f * 60 * 60 * 1000))
-        return dayDiff.roundToInt()
-    }
-
-    private fun getDateInstanceFromLocalFormat(localFormatString: String): Date {
-        val inputFormat = SimpleDateFormat(LOCAL_DATE_FORMAT, Locale.KOREA)
-        return inputFormat.parse(localFormatString)
-            ?: throw IllegalArgumentException(WRONG_FORMAT)
-    }
-
-    private fun initHourAndBelow(gregorianCalendar: GregorianCalendar) {
-        gregorianCalendar.apply {
-            set(Calendar.HOUR_OF_DAY, 0)
-            set(Calendar.MINUTE, 0)
-            set(Calendar.MILLISECOND, 0)
-        }
-    }
-
-    //For Fake
-    fun getCurrentTimeByServerFormat(): String =
-        SimpleDateFormat(UTC_DATE_FORMAT, Locale.KOREA).format(Date())
 }
