@@ -97,7 +97,6 @@ class CreateRoomAndMissionViewModel @Inject constructor(
                 _networkErrorOccur.value = true
             }
         })
-
     }
 
     fun modifyRoom(callback: () -> Unit) {

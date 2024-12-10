@@ -24,7 +24,7 @@ object TimeUtil {
     }
 
     // UTC -> Local
-    fun convertUtcToLocal(utcTime: String): String {
+    private fun convertUtcToLocal(utcTime: String): String {
         return try {
             val date = utcFormat.parse(utcTime)
             date?.let { localFormat.format(it) } ?: throw IllegalArgumentException(WRONG_FORMAT)
@@ -80,19 +80,15 @@ object TimeUtil {
         }
     }
 
-    // GregorianCalendar -> Local
+    // GregorianCalendar -> Local(KST)
     fun convertGregorianCalendarToLocal(calendar: GregorianCalendar): String {
-        return SimpleDateFormat(LOCAL_DATE_FORMAT, Locale.KOREA).format(Date(calendar.timeInMillis))
+        return utcFormat.format(Date(calendar.timeInMillis))
     }
 
-    // Utc -> GregorianCalendar
+    // Utc(KST) -> GregorianCalendar
     fun convertUtcToGregorianCalendar(utcFormatString: String): GregorianCalendar {
-        val defaultFormat = SimpleDateFormat(UTC_DATE_FORMAT, Locale.KOREA).apply {
-            timeZone = KOREA_TIME_ZONE
-        }
-        return GregorianCalendar().apply {
-            time = defaultFormat.parse(utcFormatString)
-                ?: throw IllegalArgumentException(WRONG_FORMAT)
+        return GregorianCalendar(KOREA_TIME_ZONE).apply {
+            time = utcFormat.parse(utcFormatString) ?: throw IllegalArgumentException(WRONG_FORMAT)
         }
     }
 }
