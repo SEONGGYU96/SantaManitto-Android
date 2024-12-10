@@ -147,8 +147,8 @@ class ManittoRoomViewModel @Inject constructor(
         })
     }
 
-    fun removeHistory(callback: () -> Unit) {
-        roomRequest.removeHistory(roomId) { isRemoved ->
+    fun exitRoom(callback: () -> Unit) {
+        roomRequest.exitRoom(roomId) { isRemoved ->
             if (isRemoved) {
                 callback.invoke()
             } else {

@@ -59,8 +59,6 @@ interface RoomRequest {
 
     fun exitRoom(roomId: String, callback: (onSuccess: Boolean) -> Unit)
 
-    fun removeHistory(roomId: String, callback: (onSuccess: Boolean) -> Unit)
-
     suspend fun deleteRoom(roomId: String): Result<Unit>
 
 }

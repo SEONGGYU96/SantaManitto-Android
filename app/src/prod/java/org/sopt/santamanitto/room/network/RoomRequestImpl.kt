@@ -114,10 +114,6 @@ class RoomRequestImpl(
         roomService.exitRoom(roomId).start(callback)
     }
 
-    override fun removeHistory(roomId: String, callback: (onSuccess: Boolean) -> Unit) {
-        roomService.removeHistory(roomId).start(callback)
-    }
-
     override suspend fun deleteRoom(roomId: String): Result<Unit> {
         val response = roomService.deleteRoom(roomId)
 
