@@ -81,5 +81,5 @@ class ExpirationLiveData : LiveData<ExpirationLiveData>() {
         postValue(this)
     }
 
-    override fun toString(): String = TimeUtil.convertGregorianCalendarToLocal(expirationDate)
+    override fun toString(): String = TimeUtil.convertGregorianCalendarToUtc(expirationDate)
 }

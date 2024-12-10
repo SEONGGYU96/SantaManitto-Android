@@ -85,7 +85,7 @@ class ManittoRoomViewModel @Inject constructor(
             override fun onLoadManittoRoomData(manittoRoom: ManittoRoomModel) {
                 manittoRoom.run {
                     _roomName.value = roomName
-                    _expiration.value = expirationDate
+                    _expiration.value = TimeUtil.convertUtcToKst(expirationDate)
                     _isExpired.value = TimeUtil.getDayDiffFromNow(expirationDate) < 0
                     _members.value = members
                     _invitationCode = invitationCode

@@ -19,6 +19,9 @@ object TimeUtil {
     private val utcFormat = SimpleDateFormat(UTC_DATE_FORMAT, Locale.KOREA).apply {
         timeZone = UTC_TIME_ZONE
     }
+    val kstFormat = SimpleDateFormat(UTC_DATE_FORMAT, Locale.KOREA).apply {
+        timeZone = KOREA_TIME_ZONE
+    }
     private val localFormat = SimpleDateFormat(LOCAL_DATE_FORMAT, Locale.KOREA).apply {
         timeZone = KOREA_TIME_ZONE
     }
@@ -80,8 +83,8 @@ object TimeUtil {
         }
     }
 
-    // GregorianCalendar -> Local(KST)
-    fun convertGregorianCalendarToLocal(calendar: GregorianCalendar): String {
+    // GregorianCalendar -> Utc(KST)
+    fun convertGregorianCalendarToUtc(calendar: GregorianCalendar): String {
         return utcFormat.format(Date(calendar.timeInMillis))
     }
 
@@ -90,5 +93,12 @@ object TimeUtil {
         return GregorianCalendar(KOREA_TIME_ZONE).apply {
             time = utcFormat.parse(utcFormatString) ?: throw IllegalArgumentException(WRONG_FORMAT)
         }
+    }
+
+    // Utc -> Utc(KST)
+    fun convertUtcToKst(utcFormatString: String): String {
+        return kstFormat.format(
+            utcFormat.parse(utcFormatString) ?: throw IllegalArgumentException(WRONG_FORMAT)
+        )
     }
 }
