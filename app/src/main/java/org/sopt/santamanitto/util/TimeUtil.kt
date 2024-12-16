@@ -16,6 +16,7 @@ import java.util.TimeZone
 object TimeUtil {
 
     private const val UTC_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+    private const val NO_TIME_FORMAT = "yyyy-MM-dd"
     private const val WRONG_FORMAT = "날짜 형식이 잘못되었습니다."
 
     private val UTC_TIME_ZONE: TimeZone = TimeZone.getTimeZone("UTC")
@@ -27,11 +28,14 @@ object TimeUtil {
     private val kstFormat = SimpleDateFormat(UTC_DATE_FORMAT, Locale.KOREA).apply {
         timeZone = KOREA_TIME_ZONE
     }
+    private val noTimeKstFormat = SimpleDateFormat(NO_TIME_FORMAT, Locale.KOREA).apply {
+        timeZone = KOREA_TIME_ZONE
+    }
 
     fun getDayDiff(later: String, early: String): Int {
         return try {
-            val laterDate = kstFormat.parse(later)
-            val earlyDate = kstFormat.parse(early)
+            val laterDate = noTimeKstFormat.parse(later)
+            val earlyDate = noTimeKstFormat.parse(early)
             if (laterDate != null && earlyDate != null) {
                 val diffInMillis = laterDate.time - earlyDate.time
                 val diffInDays = (diffInMillis / (1000 * 60 * 60 * 24)).toInt()
