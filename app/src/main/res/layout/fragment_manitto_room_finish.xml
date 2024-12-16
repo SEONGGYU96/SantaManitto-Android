@@ -40,6 +40,7 @@
             android:layout_marginTop="@dimen/margin_main_setting_top"
             android:padding="16dp"
             android:src="@drawable/ic_delete"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

@@ -106,6 +106,7 @@ class FinishFragment : Fragment() {
             santabottombuttonReturn.setOnClickListener {
                 requireActivity().finish()
             }
+            // TODO: 방나가기 로직 수정 필요 (우선 버튼 visibility gone 상태)
             santabuttonFinishExit.setOnClickListener {
                 showExitDialog()
             }
