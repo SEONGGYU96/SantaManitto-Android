@@ -143,7 +143,7 @@ class FinishFragment : Fragment() {
             .setContentText(requireContext().getString(R.string.exit_dialog_history))
             .addHorizontalButton(requireContext().getString(R.string.exit_dialog_host_cancel))
             .addHorizontalButton(requireContext().getString(R.string.exit_dialog_host_confirm)) {
-                viewModel.exitRoom {
+                viewModel.removeHistory {
                     requireActivity().finish()
                 }
             }
